@@ -108,15 +108,53 @@
 
         <div class="absolute inset-0 bg-black/40 z-0"></div>
 
-        <div class="relative z-10 max-w-4xl mx-auto mb-20">
+        <div class="relative z-10 max-w-4xl mx-auto mb-20 flex flex-col items-center">
 
             <h1 class="text-4xl md:text-5xl font-bold text-white tracking-wide uppercase mb-4 drop-shadow-md">
                 Welcome to Diyah Wedding
             </h1>
             
-            <p class="text-sm md:text-lg text-gray-200 max-w-2xl mx-auto font-light tracking-wide leading-relaxed drop-shadow">
+            <p class="text-sm md:text-lg text-gray-200 max-w-2xl mx-auto font-light tracking-wide leading-relaxed drop-shadow mb-8">
                 Mewujudkan pernikahan impian Anda dengan sentuhan elegan, sakral, dan tidak terlupakan. Mari abadikan momen bahagia bersama kami.
             </p>
+
+            <button id="open-popup-btn" class="px-6 py-3 bg-[#59090B] text-white font-semibold rounded-full shadow-lg hover:bg-[#420608] transition duration-300 text-sm md:text-base flex items-center gap-2 transform hover:scale-105">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l8-5.333a2 2 0 012.22 0l8 5.333A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path>
+                </svg>
+                Lihat Undangan Digital
+            </button>
+
+        </div>
+
+        <div id="wedding-popup" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+            
+            <div class="bg-[#FCE3DF] rounded-2xl max-w-md w-full p-6 md:p-8 shadow-2xl relative text-left border border-[#59090B]/10 transform scale-95 transition-transform duration-300" id="popup-content">
+                
+                <button id="close-popup-btn" class="absolute top-4 right-4 text-gray-500 hover:text-[#59090B] transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+
+                <h3 class="text-xl md:text-2xl font-bold text-[#59090B] mb-3 flex items-center gap-2">
+                    ✨ Undangan Digital Premium
+                </h3>
+
+                <p class="text-gray-700 text-sm md:text-base leading-relaxed mb-6 font-normal">
+                    Bagikan momen bahagia Anda secara modern, cepat, dan ramah lingkungan. Template undangan digital kami dilengkapi dengan musik latar romantis, galeri foto, kisah cinta, peta lokasi (Google Maps), hingga fitur konfirmasi kehadiran (RSVP) interaktif.
+                </p>
+
+                <div class="flex flex-col gap-3">
+                    <a href="undangan.html" class="w-full py-3 bg-[#59090B] text-white text-center font-bold rounded-xl hover:bg-[#420608] transition duration-300 shadow-md text-sm md:text-base block">
+                        Jelajahi Semua Template
+                    </a>
+                    
+                    <button id="close-popup-text-btn" class="w-full py-2.5 bg-transparent text-[#59090B] text-center font-medium rounded-xl hover:bg-[#59090B]/5 transition text-sm">
+                        Kembali ke Beranda
+                    </button>
+                </div>
+            </div>
 
         </div>
         
@@ -551,7 +589,45 @@
             }
         }
 
-        createDots(); 
+        createDots();
+
+        const openPopupBtn = document.getElementById('open-popup-btn');
+            const closePopupBtn = document.getElementById('close-popup-btn');
+            const closePopupTextBtn = document.getElementById('close-popup-text-btn');
+            const popupWrapper = document.getElementById('wedding-popup');
+            const popupContent = document.getElementById('popup-content');
+
+            function openPopup() {
+                popupWrapper.classList.remove('hidden');
+                popupWrapper.classList.add('flex');
+                setTimeout(() => {
+                    popupWrapper.classList.remove('opacity-0');
+                    popupWrapper.classList.add('opacity-100');
+                    popupContent.classList.remove('scale-95');
+                    popupContent.classList.add('scale-100');
+                }, 10);
+            }
+
+            function closePopup() {
+                popupWrapper.classList.remove('opacity-100');
+                popupWrapper.classList.add('opacity-0');
+                popupContent.classList.remove('scale-100');
+                popupContent.classList.add('scale-95');
+                setTimeout(() => {
+                    popupWrapper.classList.remove('flex');
+                    popupWrapper.classList.add('hidden');
+                }, 300);
+            }
+
+            openPopupBtn.addEventListener('click', openPopup);
+            closePopupBtn.addEventListener('click', closePopup);
+            closePopupTextBtn.addEventListener('click', closePopup);
+
+            popupWrapper.addEventListener('click', (e) => {
+                if (e.target === popupWrapper) {
+                    closePopup();
+                }
+            });
     </script>
 
 </body>

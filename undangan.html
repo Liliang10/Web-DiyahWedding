@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Template Undangan Digital - Diyah Wedding</title>
+</head>
+<body class="bg-[#FCE3DF] min-h-screen flex flex-col justify-between">
+
+    <header class="fixed top-0 w-full z-50 px-4 md:px-6">
+        <nav id="main-nav" class="max-w-6xl mx-auto bg-transparent backdrop-blur-none border border-transparent py-3 px-4 md:px-6 rounded-2xl transition-all duration-300 mt-4 md:mt-6 flex items-center justify-between text-[#59090B]">
+
+            <div class="flex items-center">
+                <img src="images/logoA.png" alt="logo" class="h-6 lg:h-9">
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <ul class="flex space-x-8 text-md font-semibold tracking-wide">
+                    
+                    <li class="relative group">
+                        <button class="hover:opacity-80 transition flex items-center gap-1 focus:outline-none pb-2">
+                            Browse
+                            <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="absolute left-0 pt-2 w-48 hidden group-hover:block z-50">
+                            <div class="bg-white rounded-xl shadow-lg border border-rose-50 p-2 animate-fadeIn">
+                                <ul class="space-y-1 text-sm font-medium text-gray-700">
+                                    <li><a href="index.html" class="block px-4 py-2 rounded-lg hover:bg-[#FCE3DF]/40 hover:text-[#59090B] transition">Home</a></li>
+                                    <li><a href="paket.html" class="block px-4 py-2 rounded-lg hover:bg-[#FCE3DF]/40 hover:text-[#59090B] transition">Paket</a></li>
+                                    <li><a href="gallery.html" class="block px-4 py-2 rounded-lg hover:bg-[#FCE3DF]/40 hover:text-[#59090B] transition">Gallery</a></li>
+                                    <li><a href="form.html" class="block px-4 py-2 rounded-lg hover:bg-[#FCE3DF]/40 hover:text-[#59090B] transition">Form</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li><a href="index.html" class="hover:opacity-80 transition">Services</a></li>
+                    <li><a href="index.html" class="hover:opacity-80 transition">Testimonials</a></li>
+                    <li><a href="index.html" class="hover:opacity-80 transition">Contact us</a></li>
+                </ul>
+
+                <div class="flex items-center space-x-4">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition" aria-label="Facebook">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                        </svg>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition" aria-label="Instagram">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 7.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM12 9a3.25 3.25 0 110 6.5 3.25 3.25 0 010-6.5zm5.25-1a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-white opacity-80 transition" aria-label="Twitter">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:hidden flex items-center">
+                <button id="menu-toggle-btn" class="focus:outline-none p-1.5 hover:opacity-80 transition-colors" aria-label="Toggle Menu">
+                    <svg id="hamburger-icon" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+        </nav>
+
+        <div id="mobile-menu" class="hidden absolute inset-x-4 top-20 bg-white/95 backdrop-blur-md border border-rose-100 p-6 rounded-2xl shadow-xl flex-col space-y-4 md:hidden z-50 transition-all duration-300 transform origin-top scale-y-95 opacity-0">
+        
+            <ul class="flex flex-col space-y-3 text-[15px] font-bold text-gray-800 tracking-wide">
+                <li class="text-xs font-semibold text-gray-400 uppercase tracking-widest border-b border-gray-100 pb-1 mb-1">Browse</li>
+                <li><a href="index.html" class="block py-1 hover:text-[#59090B] pl-2 border-l-2 border-transparent hover:border-[#59090B] transition">Home</a></li>
+                <li><a href="paket.html" class="block py-1 hover:text-[#59090B] pl-2 border-l-2 border-transparent hover:border-[#59090B] transition">List Paket</a></li>
+                <li><a href="gallery.html" class="block py-1 hover:text-[#59090B] pl-2 border-l-2 border-transparent hover:border-[#59090B] transition">Gallery</a></li>
+                <li><a href="form.html" class="block py-1 hover:text-[#59090B] pl-2 border-l-2 border-transparent hover:border-[#59090B] transition">Form Booking</a></li>
+                
+                <li class="text-xs font-semibold text-gray-400 uppercase tracking-widest border-b border-gray-100 pb-1 pt-2 mb-1">More</li>
+                <li><a href="index.html" class="block py-1 hover:text-[#59090B] transition">Services</a></li>
+                <li><a href="index.html" class="block py-1 hover:text-[#59090B] transition">Testimonials</a></li>
+                <li><a href="index.html" class="block py-1 hover:text-[#59090B] transition">Contact us</a></li>
+            </ul>
+
+            <div class="flex items-center space-x-5 pt-3 border-t border-gray-100 text-gray-600">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#59090B] transition" aria-label="Facebook">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#59090B] transition" aria-label="Instagram">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 7.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM12 9a3.25 3.25 0 110 6.5 3.25 3.25 0 010-6.5zm5.25-1a1 1 0 100-2 1 1 0 000 2z" /></svg>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#59090B] transition" aria-label="Twitter">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-16 px-4 max-w-6xl mx-auto w-full flex-grow">
+        
+        <div class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-[#59090B] tracking-wide uppercase mb-3">
+                Template Undangan Digital
+            </h1>
+            <p class="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
+                Pilih desain undangan digital impian Anda. Setiap template dirancang dengan elegan, responsif, dan dilengkapi dengan fitur premium modern.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-[#59090B]/5 flex flex-col justify-between group hover:shadow-xl transition duration-300">
+                <div class="overflow-hidden relative aspect-[4/3] bg-gray-100">
+                    <img src="images/template1.png" alt="Template Traditional Royal" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <span class="absolute top-3 right-3 bg-[#59090B] text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                        Traditional
+                    </span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-[#59090B] mb-2">Traditional Royal Javanese</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Sentuhan ornamen adat klasik berpadu dengan aksen warna emas mewah, memberikan kesan sakral, megah, dan agung untuk hari istimewa Anda.
+                    </p>
+                    <div class="flex items-center justify-between gap-4 pt-2">
+                        <a href="https://wa.me/6281234567890?text=Halo%20Diyah%20Wedding,%20saya%20tertarik%20dengan%20Template%20Traditional%20Royal%20Javanese" target="_blank" class="flex-1 py-2.5 bg-[#59090B] text-white text-center font-semibold rounded-xl text-sm hover:bg-[#420608] transition shadow-sm">
+                            Pilih Desain
+                        </a>
+                        <a href="undangan-tradisional.html?to=Tamu+Undangan" target="_blank" class="flex-1 py-2.5 bg-transparent border border-[#59090B] text-[#59090B] text-center font-semibold rounded-xl text-sm hover:bg-[#59090B]/5 transition">
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-[#59090B]/5 flex flex-col justify-between group hover:shadow-xl transition duration-300">
+                <div class="overflow-hidden relative aspect-[4/3] bg-gray-100">
+                    <img src="images/template2.png" alt="Template Cute Cartoon" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <span class="absolute top-3 right-3 bg-[#59090B] text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                        Cartoon Style
+                    </span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-[#59090B] mb-2">Sweet Cartoon Illustration</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Desain ceria dan penuh warna dengan ilustrasi kartun pasangan yang menggemaskan, transisi halus, serta animasi kelopak bunga berguguran yang interaktif.
+                    </p>
+                    <div class="flex items-center justify-between gap-4 pt-2">
+                        <a href="https://wa.me/6281234567890?text=Halo%20Diyah%20Wedding,%20saya%20tertarik%20dengan%20Template%20Sweet%20Cartoon%20Illustration" target="_blank" class="flex-1 py-2.5 bg-[#59090B] text-white text-center font-semibold rounded-xl text-sm hover:bg-[#420608] transition shadow-sm">
+                            Pilih Desain
+                        </a>
+                        <a href="undangan-kartun.html?to=Tamu+Undangan" target="_blank" class="flex-1 py-2.5 bg-transparent border border-[#59090B] text-[#59090B] text-center font-semibold rounded-xl text-sm hover:bg-[#59090B]/5 transition">
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-[#59090B]/5 flex flex-col justify-between group hover:shadow-xl transition duration-300">
+                <div class="overflow-hidden relative aspect-[4/3] bg-gray-100">
+                    <img src="images/template3.png" alt="Template Modern Elegant" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <span class="absolute top-3 right-3 bg-[#59090B] text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                        Modern
+                    </span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-[#59090B] mb-2">Aesthetic Minimalist Modern</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Tampilan bersih dengan tipografi kontemporer, penataan layout foto estetik, dan navigasi melayang yang anggun, sangat cocok untuk tema pernikahan urban kekinian.
+                    </p>
+                    <div class="flex items-center justify-between gap-4 pt-2">
+                        <a href="https://wa.me/6281234567890?text=Halo%20Diyah%20Wedding,%20saya%20tertarik%20dengan%20Template%20Aesthetic%20Minimalist%20Modern" target="_blank" class="flex-1 py-2.5 bg-[#59090B] text-white text-center font-semibold rounded-xl text-sm hover:bg-[#420608] transition shadow-sm">
+                            Pilih Desain
+                        </a>
+                        <a href="undangan-modern.html?to=Tamu+Undangan" target="_blank" class="flex-1 py-2.5 bg-transparent border border-[#59090B] text-[#59090B] text-center font-semibold rounded-xl text-sm hover:bg-[#59090B]/5 transition">
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const menuToggleBtn = document.getElementById('menu-toggle-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        menuToggleBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('scale-y-95', 'opacity-0');
+                    mobileMenu.classList.add('scale-y-100', 'opacity-100');
+                }, 10);
+                
+                hamburgerIcon.classList.replace('block', 'hidden');
+                closeIcon.classList.replace('hidden', 'block');
+            } else {
+                mobileMenu.classList.remove('scale-y-100', 'opacity-100');
+                mobileMenu.classList.add('scale-y-95', 'opacity-0');
+                
+                setTimeout(() => {
+                    mobileMenu.classList.remove('flex');
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+                
+                hamburgerIcon.classList.replace('hidden', 'block');
+                closeIcon.classList.replace('block', 'hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>

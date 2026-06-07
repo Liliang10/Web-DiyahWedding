@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <title>The Wedding of Adrian & Nadia - Minimalist Modern</title>
+    <style>
+        .font-sans-clean { font-family: 'Montserrat', sans-serif; }
+        .font-serif-chic { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-[#F9F6F0] text-[#2c2a29] font-sans-clean min-h-screen overflow-x-hidden">
+
+    <audio id="bg-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2026/03/20/audio_3f4f5a8d2c.mp3?filename=modern-classical-wedding-485932.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="cover-section" class="fixed inset-0 z-50 bg-[#F4EFE6] flex flex-col justify-between items-center py-20 px-8 text-center transition-all duration-1000 ease-in-out">
+        <p class="text-[10px] tracking-[0.4em] uppercase text-gray-500 font-light">Wedding Invitation</p>
+
+        <div class="space-y-6">
+            <h1 class="text-4xl md:text-5xl font-serif-chic font-light tracking-wide italic">Adrian & Nadia</h1>
+            <div class="h-[1px] w-12 bg-gray-400 mx-auto my-4"></div>
+            <p class="text-[10px] tracking-widest text-gray-400 uppercase">Dear, Special Guest</p>
+            <h2 id="nama-tamu-cover" class="text-xl font-normal tracking-wide text-gray-800">Tamu Undangan</h2>
+        </div>
+
+        <button id="btn-buka" class="px-8 py-2.5 bg-[#4A4741] text-white text-[11px] font-light uppercase tracking-[0.2em] rounded-none hover:bg-[#363430] transition duration-300">
+            Open Invitation
+        </button>
+    </div>
+
+    <main class="max-w-md mx-auto bg-white min-h-screen shadow-sm relative pb-20 border-x border-gray-100">
+        
+        <section class="py-24 px-8 text-center space-y-6">
+            <h2 class="text-4xl font-serif-chic italic font-light">Adrian & Nadia</h2>
+            <div class="h-[1px] w-8 bg-gray-300 mx-auto"></div>
+            <p class="text-[11px] tracking-[0.3em] text-gray-400 uppercase">08 . 11 . 2026</p>
+            
+            <div class="flex gap-4 justify-center text-center pt-8 text-gray-700">
+                <div class="w-14"><span id="hari" class="text-xl font-light block">00</span><span class="text-[9px] tracking-widest text-gray-400 uppercase">Days</span></div>
+                <div class="w-14"><span id="jam" class="text-xl font-light block">00</span><span class="text-[9px] tracking-widest text-gray-400 uppercase">Hrs</span></div>
+                <div class="w-14"><span id="menit" class="text-xl font-light block">00</span><span class="text-[9px] tracking-widest text-gray-400 uppercase">Min</span></div>
+                <div class="w-14"><span id="detik" class="text-xl font-light block">00</span><span class="text-[9px] tracking-widest text-gray-400 uppercase">Sec</span></div>
+            </div>
+        </section>
+
+        <section class="py-12 px-8 text-center space-y-12">
+            <div class="space-y-4">
+                <div class="w-full aspect-[4/5] bg-gray-50 border border-gray-200 flex items-center justify-center overflow-hidden grayscale opacity-90">
+                    <span class="text-gray-400 text-xs font-light tracking-widest uppercase">Groom's Portrait</span>
+                </div>
+                <h3 class="text-xl font-serif-chic font-light tracking-wide">Adrian Pratama, M.B.A.</h3>
+                <p class="text-[11px] font-light text-gray-500 tracking-wide leading-relaxed">Putra Pertama dari Bapak Subroto & Ibu Elen</p>
+            </div>
+
+            <p class="text-lg font-serif-chic italic font-light text-gray-400">— and —</p>
+
+            <div class="space-y-4">
+                <div class="w-full aspect-[4/5] bg-gray-50 border border-gray-200 flex items-center justify-center overflow-hidden grayscale opacity-90">
+                    <span class="text-gray-400 text-xs font-light tracking-widest uppercase">Bride's Portrait</span>
+                </div>
+                <h3 class="text-xl font-serif-chic font-light tracking-wide">Nadia Utami, S.I.Kom.</h3>
+                <p class="text-[11px] font-light text-gray-500 tracking-wide leading-relaxed">Putri Kedua dari Bapak Hendra & Ibu Lisa</p>
+            </div>
+        </section>
+
+        <section class="py-12 px-8 text-center space-y-6 bg-[#FAF9F5]">
+            <div class="space-y-1">
+                <p class="text-[9px] tracking-[0.3em] uppercase text-gray-400">Our Story In Frames</p>
+                <h4 class="text-md font-serif-chic italic font-light text-[#4A4741]">The Prewedding Gallery</h4>
+                <div class="h-[1px] w-6 bg-gray-300 mx-auto mt-2"></div>
+            </div>
+            
+            <div class="space-y-3 max-w-xs mx-auto pt-2">
+                <div class="w-full aspect-[16/10] bg-white border border-gray-200 flex items-center justify-center text-gray-400 text-[10px] tracking-widest uppercase p-2 grayscale">Prewedding Story Single #01</div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="w-full aspect-square bg-white border border-gray-200 flex items-center justify-center text-gray-400 text-[9px] tracking-widest uppercase p-2 grayscale">Portrait #02</div>
+                    <div class="w-full aspect-square bg-white border border-gray-200 flex items-center justify-center text-gray-400 text-[9px] tracking-widest uppercase p-2 grayscale">Portrait #03</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-8 bg-[#FBFBFA] border-y border-gray-100 text-center space-y-8">
+            <div class="space-y-2">
+                <h4 class="text-xs font-semibold tracking-[0.2em] uppercase text-gray-700">The Holy Matrimony</h4>
+                <p class="text-[11px] font-light text-gray-500">09:00 AM — 11:00 AM</p>
+                <p class="text-[11px] font-light text-gray-500">Gereja Katedral Estetik</p>
+            </div>
+            <div class="w-6 h-[1px] bg-gray-300 mx-auto"></div>
+            <div class="space-y-2">
+                <h4 class="text-xs font-semibold tracking-[0.2em] uppercase text-gray-700">The Wedding Dinner</h4>
+                <p class="text-[11px] font-light text-gray-500">06:00 PM — End</p>
+                <p class="text-[11px] font-light text-gray-500">The Glass House Pavillion</p>
+            </div>
+            <a href="#" target="_blank" class="inline-block mt-4 px-6 py-2 bg-[#4A4741] text-white text-[10px] uppercase tracking-widest transition hover:bg-[#363430]">View On Maps</a>
+        </section>
+
+        <section class="py-16 px-8 text-center space-y-8 bg-white">
+            <div class="space-y-2">
+                <p class="text-[9px] tracking-[0.3em] uppercase text-gray-400">Wishes & Blessings</p>
+                <h4 class="text-md font-serif-chic italic font-light text-[#4A4741]">Leave a Message</h4>
+                <div class="h-[1px] w-6 bg-gray-300 mx-auto"></div>
+            </div>
+            
+            <form class="space-y-4 text-left max-w-xs mx-auto">
+                <div>
+                    <input type="text" placeholder="YOUR NAME" class="w-full p-3 bg-transparent border-b border-gray-300 rounded-none text-xs text-gray-800 placeholder-gray-400 tracking-widest focus:outline-none focus:border-gray-800 transition">
+                </div>
+                <div>
+                    <textarea rows="3" placeholder="YOUR WISHES AND BLESSINGS..." class="w-full p-3 bg-transparent border-b border-gray-300 rounded-none text-xs text-gray-800 placeholder-gray-400 tracking-widest focus:outline-none focus:border-gray-800 transition"></textarea>
+                </div>
+                <button type="button" class="w-full py-3 bg-[#4A4741] hover:bg-[#2c2a29] text-white text-[10px] uppercase tracking-[0.2em] rounded-none transition">Send Wishes</button>
+            </form>
+        </section>
+
+    </main>
+
+    <script>
+        const btnBuka = document.getElementById('btn-buka');
+        const coverSection = document.getElementById('cover-section');
+        const music = document.getElementById('bg-music');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const namaTamu = urlParams.get('to');
+        if (namaTamu) { document.getElementById('nama-tamu-cover').innerText = decodeURIComponent(namaTamu); }
+
+        btnBuka.addEventListener('click', () => {
+            music.play().catch(e => console.log("Audio block enabled"));
+            coverSection.classList.add('opacity-0', '-translate-x-full');
+            setTimeout(() => { coverSection.style.display = 'none'; }, 1000);
+        });
+
+        const targetDate = new Date("Nov 08, 2026 09:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime(); const distance = targetDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("hari").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("jam").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("menit").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("detik").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }, 1000);
+    </script>
+</body>
+</html>
