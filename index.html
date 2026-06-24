@@ -104,7 +104,7 @@
         </div>
     </header>
 
-    <section class="relative min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-center px-4" style="background-image: url('images/hero.png');">
+    <section class="relative min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-center px-4" style="background-image: url('images/simple_decoration3.png');">
 
         <div class="absolute inset-0 bg-black/40 z-0"></div>
 
@@ -115,43 +115,43 @@
             </h1>
             
             <p class="text-sm md:text-lg text-gray-200 max-w-2xl mx-auto font-light tracking-wide leading-relaxed drop-shadow mb-8">
-                Mewujudkan pernikahan impian Anda dengan sentuhan elegan, sakral, dan tidak terlupakan. Mari abadikan momen bahagia bersama kami.
+                Penyedia jasa sewa tenda eksklusif dan dekorasi pernikahan impian dengan sentuhan elegan, sakral, dan tidak terlupakan. Mari abadikan momen bahagia bersama kami.
             </p>
 
-            <button id="open-popup-btn" class="px-6 py-3 bg-[#59090B] text-white font-semibold rounded-full shadow-lg hover:bg-[#420608] transition duration-300 text-sm md:text-base flex items-center gap-2 transform hover:scale-105">
+            <a href="paket.html" class="px-6 py-3 bg-[#59090B] text-white font-semibold rounded-full shadow-lg hover:bg-[#420608] transition duration-300 text-sm md:text-base flex items-center gap-2 transform hover:scale-105">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l8-5.333a2 2 0 012.22 0l8 5.333A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                 </svg>
-                Lihat Undangan Digital
-            </button>
+                Lihat Paket Dekorasi & Tenda
+            </a>
 
         </div>
 
-        <div id="wedding-popup" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div id="wedding-popup" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-all duration-300">
             
-            <div class="bg-[#FCE3DF] rounded-2xl max-w-md w-full p-6 md:p-8 shadow-2xl relative text-left border border-[#59090B]/10 transform scale-95 transition-transform duration-300" id="popup-content">
+            <div class="bg-[#FCE3DF] rounded-2xl max-w-md w-full p-6 md:p-8 shadow-2xl relative text-left border border-[#59090B]/10 transform scale-95 transition-all duration-300" id="popup-content">
                 
-                <button id="close-popup-btn" class="absolute top-4 right-4 text-gray-500 hover:text-[#59090B] transition">
+                <button id="close-popup-btn" class="absolute top-4 right-4 text-gray-500 hover:text-[#59090B] transition focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
 
                 <h3 class="text-xl md:text-2xl font-bold text-[#59090B] mb-3 flex items-center gap-2">
-                    ✨ Undangan Digital Premium
+                    ✨ Bonus Undangan Digital Premium
                 </h3>
 
                 <p class="text-gray-700 text-sm md:text-base leading-relaxed mb-6 font-normal">
-                    Bagikan momen bahagia Anda secara modern, cepat, dan ramah lingkungan. Template undangan digital kami dilengkapi dengan musik latar romantis, galeri foto, kisah cinta, peta lokasi (Google Maps), hingga fitur konfirmasi kehadiran (RSVP) interaktif.
+                    Dapatkan fasilitas eksklusif <strong>Undangan Digital Gratis</strong> untuk setiap pemesanan Paket Tenda & Dekorasi di Diyah Wedding! Bagikan momen bahagia Anda secara modern, cepat, dilengkapi musik latar romantis, galeri foto, hingga konfirmasi kehadiran (RSVP) interaktif.
                 </p>
 
                 <div class="flex flex-col gap-3">
                     <a href="undangan.html" class="w-full py-3 bg-[#59090B] text-white text-center font-bold rounded-xl hover:bg-[#420608] transition duration-300 shadow-md text-sm md:text-base block">
-                        Jelajahi Semua Template
+                        Lihat Contoh Undangan Digital
                     </a>
                     
                     <button id="close-popup-text-btn" class="w-full py-2.5 bg-transparent text-[#59090B] text-center font-medium rounded-xl hover:bg-[#59090B]/5 transition text-sm">
-                        Kembali ke Beranda
+                        Lanjutkan ke Penyewaan Tenda
                     </button>
                 </div>
             </div>
@@ -452,182 +452,183 @@
     </footer>
 
     <script>
-        const menuToggleBtn = document.getElementById('menu-toggle-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const hamburgerIcon = document.getElementById('hamburger-icon');
-        const closeIcon = document.getElementById('close-icon');
+        document.addEventListener("DOMContentLoaded", function () {
 
-        menuToggleBtn.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            
-            if (isHidden) {
-                mobileMenu.classList.remove('hidden');
-                mobileMenu.classList.add('flex');
+            const menuToggleBtn = document.getElementById('menu-toggle-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            if (menuToggleBtn && mobileMenu) {
+                menuToggleBtn.addEventListener('click', () => {
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    
+                    if (isHidden) {
+                        mobileMenu.classList.remove('hidden');
+                        mobileMenu.classList.add('flex');
+                        setTimeout(() => {
+                            mobileMenu.classList.remove('scale-y-95', 'opacity-0');
+                            mobileMenu.classList.add('scale-y-100', 'opacity-100');
+                        }, 10);
+                        
+                        if (hamburgerIcon) hamburgerIcon.classList.replace('block', 'hidden');
+                        if (closeIcon) closeIcon.classList.replace('hidden', 'block');
+                    } else {
+                        mobileMenu.classList.remove('scale-y-100', 'opacity-100');
+                        mobileMenu.classList.add('scale-y-95', 'opacity-0');
+                        
+                        setTimeout(() => {
+                            mobileMenu.classList.remove('flex');
+                            mobileMenu.classList.add('hidden');
+                        }, 300);
+                        
+                        if (hamburgerIcon) hamburgerIcon.classList.replace('hidden', 'block');
+                        if (closeIcon) closeIcon.classList.replace('block', 'hidden');
+                    }
+                });
+            }
+
+            const testimonialsData = [
+                {
+                    text: `"Terima kasih banyak untuk Diyah Wedding! Pernikahan kami berjalan dengan sangat elegan dan sakral melebihi apa yang kami impikan selama ini. Timnya sangat profesional, dekorasinya luar biasa megah, dan koordinasi di lapangan sangat rapi. Semua tamu memuji keindahan acara kami!"`,
+                    image: "images/couple.png",
+                    name: "Joy & Jordan"
+                },
+                {
+                    text: `"Sangat puas dengan pelayanan Diyah Wedding. Mulai dari perencanaan H-6 bulan sampai hari H selalu fast-respons. Gaunnya cantik-cantik, make up-nya flawless banget awet seharian tanpa luntur. Highly recommended buat calon pengantin!"`,
+                    image: "images/couple.png",
+                    name: "Anisa & Rizky"
+                },
+                {
+                    text: `"Keluarga besar kami sangat mengapresiasi kerja keras tim WO. Kateringnya enak dan penyajiannya rapi, alur tamu mengalir lancar meskipun yang datang membludak. Terima kasih sudah mewujudkan pernikahan impian kami tanpa stres!"`,
+                    image: "images/couple.png",
+                    name: "Citra & David"
+                }
+            ];
+
+            let currentIndex = 0;
+
+            const textEl = document.getElementById('testimonial-text');
+            const imgEl = document.getElementById('testimonial-img');
+            const nameEl = document.getElementById('testimonial-name');
+            const containerEl = document.getElementById('testimonial-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const dotsContainer = document.getElementById('testimonial-dots');
+
+            function createDots() {
+                if (!dotsContainer) return;
+                dotsContainer.innerHTML = '';
+                testimonialsData.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-[#FCE3DF] w-6' : 'bg-white/30 hover:bg-white/50'}`;
+                    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                    dot.addEventListener('click', () => updateTestimonial(index));
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function updateTestimonial(index) {
+                if (!containerEl) return;
+                containerEl.classList.remove('opacity-100', 'scale-100');
+                containerEl.classList.add('opacity-0', 'scale-95');
+
                 setTimeout(() => {
-                    mobileMenu.classList.remove('scale-y-95', 'opacity-0');
-                    mobileMenu.classList.add('scale-y-100', 'opacity-100');
-                }, 10);
-                
-                hamburgerIcon.classList.replace('block', 'hidden');
-                closeIcon.classList.replace('hidden', 'block');
-            } else {
-                mobileMenu.classList.remove('scale-y-100', 'opacity-100');
-                mobileMenu.classList.add('scale-y-95', 'opacity-0');
-                
-                setTimeout(() => {
-                    mobileMenu.classList.remove('flex');
-                    mobileMenu.classList.add('hidden');
-                }, 300);
-                
-                hamburgerIcon.classList.replace('hidden', 'block');
-                closeIcon.classList.replace('block', 'hidden');
+                    currentIndex = index;
+                    
+                    if(textEl) textEl.innerHTML = testimonialsData[currentIndex].text;
+                    if(imgEl) {
+                        imgEl.src = testimonialsData[currentIndex].image;
+                        imgEl.alt = testimonialsData[currentIndex].name;
+                    }
+                    if(nameEl) nameEl.innerHTML = testimonialsData[currentIndex].name;
+
+                    containerEl.classList.remove('opacity-0', 'scale-95');
+                    containerEl.classList.add('opacity-100', 'scale-100');
+                    
+                    createDots();
+                }, 250);
             }
-        });
 
-        const testimonialsData = [
-            {
-                text: `"Terima kasih banyak untuk Diyah Wedding! Pernikahan kami berjalan dengan sangat elegan dan sakral melebihi apa yang kami impikan selama ini. Timnya sangat profesional, dekorasinya luar biasa megah, dan koordinasi di lapangan sangat rapi. Semua tamu memuji keindahan acara kami!"`,
-                image: "images/couple.png",
-                name: "Joy & Jordan"
-            },
-            {
-                text: `"Sangat puas dengan pelayanan Diyah Wedding. Mulai dari perencanaan H-6 bulan sampai hari H selalu fast-respons. Gaunnya cantik-cantik, make up-nya flawless banget awet seharian tanpa luntur. Highly recommended buat calon pengantin!"`,
-                image: "images/couple.png",
-                name: "Anisa & Rizky"
-            },
-            {
-                text: `"Keluarga besar kami sangat mengapresiasi kerja keras tim WO. Kateringnya enak dan penyajiannya rapi, alur tamu mengalir lancar meskipun yang datang membludak. Terima kasih sudah mewujudkan pernikahan impian kami tanpa stres!"`,
-                image: "images/couple.png",
-                name: "Citra & David"
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    let nextIndex = currentIndex + 1;
+                    if (nextIndex >= testimonialsData.length) nextIndex = 0;
+                    updateTestimonial(nextIndex);
+                });
             }
-        ];
 
-        let currentIndex = 0;
-
-        const textEl = document.getElementById('testimonial-text');
-        const imgEl = document.getElementById('testimonial-img');
-        const nameEl = document.getElementById('testimonial-name');
-        const containerEl = document.getElementById('testimonial-container');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const dotsContainer = document.getElementById('testimonial-dots');
-
-        function createDots() {
-            if (!dotsContainer) return;
-            dotsContainer.innerHTML = '';
-            testimonialsData.forEach((_, index) => {
-                const dot = document.createElement('button');
-                dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-[#FCE3DF] w-6' : 'bg-white/30 hover:bg-white/50'}`;
-                dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-                dot.addEventListener('click', () => updateTestimonial(index));
-                dotsContainer.appendChild(dot);
-            });
-        }
-
-        function updateTestimonial(index) {
-            if (!containerEl) return;
-            containerEl.classList.remove('opacity-100', 'scale-100');
-            containerEl.classList.add('opacity-0', 'scale-95');
-
-            setTimeout(() => {
-                currentIndex = index;
-                
-                if(textEl) textEl.innerHTML = testimonialsData[currentIndex].text;
-                if(imgEl) {
-                    imgEl.src = testimonialsData[currentIndex].image;
-                    imgEl.alt = testimonialsData[currentIndex].name;
-                }
-                if(nameEl) nameEl.innerHTML = testimonialsData[currentIndex].name;
-
-                containerEl.classList.remove('opacity-0', 'scale-95');
-                containerEl.classList.add('opacity-100', 'scale-100');
-                
-                createDots();
-            }, 250);
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                let nextIndex = currentIndex + 1;
-                if (nextIndex >= testimonialsData.length) {
-                    nextIndex = 0;
-                }
-                updateTestimonial(nextIndex);
-            });
-        }
-
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                let prevIndex = currentIndex - 1;
-                if (prevIndex < 0) {
-                    prevIndex = testimonialsData.length - 1;
-                }
-                updateTestimonial(prevIndex);
-            });
-        }
-
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        if (containerEl) {
-            containerEl.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-
-            containerEl.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            });
-        }
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            if (touchStartX - touchEndX > swipeThreshold) {
-                if (nextBtn) nextBtn.click();
-            } else if (touchEndX - touchStartX > swipeThreshold) {
-                if (prevBtn) prevBtn.click();
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    let prevIndex = currentIndex - 1;
+                    if (prevIndex < 0) prevIndex = testimonialsData.length - 1;
+                    updateTestimonial(prevIndex);
+                });
             }
-        }
 
-        createDots();
+            let touchStartX = 0;
+            let touchEndX = 0;
 
-        const openPopupBtn = document.getElementById('open-popup-btn');
-            const closePopupBtn = document.getElementById('close-popup-btn');
-            const closePopupTextBtn = document.getElementById('close-popup-text-btn');
-            const popupWrapper = document.getElementById('wedding-popup');
+            if (containerEl) {
+                containerEl.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+
+                containerEl.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const swipeThreshold = 50;
+                    if (touchStartX - touchEndX > swipeThreshold) {
+                        if (nextBtn) nextBtn.click();
+                    } else if (touchEndX - touchStartX > swipeThreshold) {
+                        if (prevBtn) prevBtn.click();
+                    }
+                });
+            }
+
+            createDots();
+
+            const popup = document.getElementById('wedding-popup');
             const popupContent = document.getElementById('popup-content');
+            const closeBtn = document.getElementById('close-popup-btn');
+            const closeTextBtn = document.getElementById('close-popup-text-btn');
 
-            function openPopup() {
-                popupWrapper.classList.remove('hidden');
-                popupWrapper.classList.add('flex');
-                setTimeout(() => {
-                    popupWrapper.classList.remove('opacity-0');
-                    popupWrapper.classList.add('opacity-100');
-                    popupContent.classList.remove('scale-95');
-                    popupContent.classList.add('scale-100');
-                }, 10);
+            function showPopup() {
+                if (popup && popupContent) {
+                    popup.classList.remove('hidden');
+                    popup.classList.add('flex');
+                    setTimeout(() => {
+                        popup.classList.remove('opacity-0');
+                        popupContent.classList.remove('scale-95');
+                        popupContent.classList.add('scale-100');
+                    }, 50);
+                }
             }
 
             function closePopup() {
-                popupWrapper.classList.remove('opacity-100');
-                popupWrapper.classList.add('opacity-0');
-                popupContent.classList.remove('scale-100');
-                popupContent.classList.add('scale-95');
-                setTimeout(() => {
-                    popupWrapper.classList.remove('flex');
-                    popupWrapper.classList.add('hidden');
-                }, 300);
+                if (popup && popupContent) {
+                    popup.classList.add('opacity-0');
+                    popupContent.classList.remove('scale-100');
+                    popupContent.classList.add('scale-95');
+                    setTimeout(() => {
+                        popup.classList.remove('flex');
+                        popup.classList.add('hidden');
+                    }, 300);
+                }
             }
 
-            openPopupBtn.addEventListener('click', openPopup);
-            closePopupBtn.addEventListener('click', closePopup);
-            closePopupTextBtn.addEventListener('click', closePopup);
+            showPopup();
 
-            popupWrapper.addEventListener('click', (e) => {
-                if (e.target === popupWrapper) {
-                    closePopup();
-                }
-            });
+            if (closeBtn) closeBtn.addEventListener('click', closePopup);
+            if (closeTextBtn) closeTextBtn.addEventListener('click', closePopup);
+            if (popup) {
+                popup.addEventListener('click', function (e) {
+                    if (e.target === popup) {
+                        closePopup();
+                    }
+                });
+            }
+
+        });
     </script>
 
 </body>

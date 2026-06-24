@@ -19,103 +19,102 @@
 
     <div id="cover-section" class="fixed inset-0 z-50 bg-[#F4EFE6] flex flex-col justify-between items-center py-20 px-8 text-center transition-all duration-1000 ease-in-out">
         <p class="text-[10px] tracking-[0.4em] uppercase text-gray-500 font-light">Wedding Invitation</p>
-
-        <div class="space-y-6">
-            <h1 class="text-4xl md:text-5xl font-serif-chic font-light tracking-wide italic">Adrian & Nadia</h1>
+        
+        <div class="space-y-4">
+            <h1 class="font-serif-chic text-5xl italic font-light tracking-wide text-gray-800">Adrian & Nadia</h1>
             <div class="h-[1px] w-12 bg-gray-400 mx-auto my-4"></div>
-            <p class="text-[10px] tracking-widest text-gray-400 uppercase">Dear, Special Guest</p>
-            <h2 id="nama-tamu-cover" class="text-xl font-normal tracking-wide text-gray-800">Tamu Undangan</h2>
+            <p class="text-[11px] tracking-widest text-gray-400 uppercase">08 . 11 . 2026</p>
         </div>
 
-        <button id="btn-buka" class="px-8 py-2.5 bg-[#4A4741] text-white text-[11px] font-light uppercase tracking-[0.2em] rounded-none hover:bg-[#363430] transition duration-300">
-            Open Invitation
-        </button>
+        <div class="space-y-3 max-w-xs w-full">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Dear Our Guest,</p>
+            <p id="nama-tamu-cover" class="font-serif-chic text-2xl border-b border-gray-300 pb-2 text-gray-700">Keluarga & Sahabat Tercinta</p>
+            <button id="btn-buka" class="mt-6 px-6 py-2.5 bg-[#2c2a29] text-white text-xs uppercase tracking-widest rounded hover:bg-gray-800 transition shadow-md">
+                Open Invitation
+            </button>
+        </div>
     </div>
 
-    <main class="max-w-md mx-auto bg-white min-h-screen shadow-sm relative pb-20 border-x border-gray-100">
+    <main class="max-w-md mx-auto bg-white min-h-screen shadow-2xl pb-16">
         
-        <section class="py-24 px-8 text-center space-y-6">
-            <h2 class="text-4xl font-serif-chic italic font-light">Adrian & Nadia</h2>
-            <div class="h-[1px] w-8 bg-gray-300 mx-auto"></div>
-            <p class="text-[11px] tracking-[0.3em] text-gray-400 uppercase">08 . 11 . 2026</p>
+        <section class="text-center py-20 px-6 bg-[#F4EFE6]/50 rounded-b-[4rem]">
+            <p class="text-[10px] tracking-[0.3em] uppercase text-gray-400 mb-3">Save the Date</p>
+            <h2 class="font-serif-chic text-4xl font-light mb-6">Adrian & Nadia</h2>
             
-            <div class="flex gap-4 justify-center text-center pt-8 text-gray-700">
-                <div class="w-14"><span id="hari" class="text-xl font-light block">00</span><span class="text-[9px] tracking-widest text-gray-400 uppercase">Days</span></div>
-                <div class="w-14"><span id="jam" class="text-xl font-light block">00</span><span class="text-[9px] tracking-widest text-gray-400 uppercase">Hrs</span></div>
-                <div class="w-14"><span id="menit" class="text-xl font-light block">00</span><span class="text-[9px] tracking-widest text-gray-400 uppercase">Min</span></div>
-                <div class="w-14"><span id="detik" class="text-xl font-light block">00</span><span class="text-[9px] tracking-widest text-gray-400 uppercase">Sec</span></div>
+            <div class="w-full h-80 bg-gray-100 rounded-2xl overflow-hidden shadow-sm my-6">
+                <img src="images/modern_couple.png" alt="Adrian & Nadia Portrait" class="w-full h-full object-cover">
+            </div>
+            
+            <p class="text-xs tracking-widest uppercase text-gray-500 mt-4">Minggu, 08 November 2026</p>
+        </section>
+
+        <section class="p-10 text-center space-y-4">
+            <p class="font-serif-chic italic text-gray-600 text-sm">
+                "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."
+            </p>
+            <p class="text-[10px] tracking-widest uppercase text-gray-400">— Maya Angelou</p>
+        </section>
+
+        <section class="p-8 space-y-12 bg-[#F9F6F0]/30">
+            <div class="text-center space-y-3">
+                <h3 class="font-serif-chic text-2xl text-gray-800">Adrian Pratama, S.T.</h3>
+                <p class="text-xs text-gray-500">Putra bungsu dari Bapak Ir. H. Ahmad Wijaya & Ibu Hj. Rini Marlina</p>
+            </div>
+            
+            <div class="text-center font-serif-chic text-xl italic text-gray-400">and</div>
+
+            <div class="text-center space-y-3">
+                <h3 class="font-serif-chic text-2xl text-gray-800">Nadia Utami, M.Ds.</h3>
+                <p class="text-xs text-gray-500">Putri pertama dari Bapak Dr. Hendra Saputra & Ibu dr. Linda Permata</p>
             </div>
         </section>
 
-        <section class="py-12 px-8 text-center space-y-12">
-            <div class="space-y-4">
-                <div class="w-full aspect-[4/5] bg-gray-50 border border-gray-200 flex items-center justify-center overflow-hidden grayscale opacity-90">
-                    <span class="text-gray-400 text-xs font-light tracking-widest uppercase">Groom's Portrait</span>
-                </div>
-                <h3 class="text-xl font-serif-chic font-light tracking-wide">Adrian Pratama, M.B.A.</h3>
-                <p class="text-[11px] font-light text-gray-500 tracking-wide leading-relaxed">Putra Pertama dari Bapak Subroto & Ibu Elen</p>
+        <section class="p-8 space-y-6">
+            <div class="text-center border-b border-gray-100 pb-4">
+                <h3 class="font-serif-chic text-xl tracking-wide uppercase text-gray-700">The Celebration</h3>
             </div>
 
-            <p class="text-lg font-serif-chic italic font-light text-gray-400">— and —</p>
-
-            <div class="space-y-4">
-                <div class="w-full aspect-[4/5] bg-gray-50 border border-gray-200 flex items-center justify-center overflow-hidden grayscale opacity-90">
-                    <span class="text-gray-400 text-xs font-light tracking-widest uppercase">Bride's Portrait</span>
+            <div class="space-y-6">
+                <div class="border border-gray-200 p-6 rounded-xl space-y-2">
+                    <p class="text-xs font-bold tracking-widest uppercase text-gray-400">Holy Matrimony</p>
+                    <p class="text-sm font-semibold text-gray-700">Pukul 09.00 WIB - Selesai</p>
+                    <p class="text-xs text-gray-500">Katedral Elok Grand Ballroom</p>
                 </div>
-                <h3 class="text-xl font-serif-chic font-light tracking-wide">Nadia Utami, S.I.Kom.</h3>
-                <p class="text-[11px] font-light text-gray-500 tracking-wide leading-relaxed">Putri Kedua dari Bapak Hendra & Ibu Lisa</p>
+
+                <div class="bg-[#F4EFE6]/40 border border-[#F4EFE6] p-6 rounded-xl space-y-2">
+                    <p class="text-xs font-bold tracking-widest uppercase text-gray-600">Wedding Reception</p>
+                    <p class="text-sm font-semibold text-gray-700">Pukul 12.00 - 15.00 WIB</p>
+                    <p class="text-xs text-gray-600 font-medium">The Glass House Pavilion</p>
+                    <p class="text-[11px] text-gray-400">Hotel Seruni Luxury, Lt. 5, Jakarta</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-4 gap-3 text-center pt-6">
+                <div class="border border-gray-200 py-3 rounded-lg"><span id="hari" class="text-base font-semibold block text-gray-800">00</span><span class="text-[9px] uppercase text-gray-400">Days</span></div>
+                <div class="border border-gray-200 py-3 rounded-lg"><span id="jam" class="text-base font-semibold block text-gray-800">00</span><span class="text-[9px] uppercase text-gray-400">Hours</span></div>
+                <div class="border border-gray-200 py-3 rounded-lg"><span id="menit" class="text-base font-semibold block text-gray-800">00</span><span class="text-[9px] uppercase text-gray-400">Mins</span></div>
+                <div class="border border-gray-200 py-3 rounded-lg"><span id="detik" class="text-base font-semibold block text-gray-800">00</span><span class="text-[9px] uppercase text-gray-400">Secs</span></div>
             </div>
         </section>
-
-        <section class="py-12 px-8 text-center space-y-6 bg-[#FAF9F5]">
+        
+        <section class="py-10 px-6 text-center space-y-6 bg-gradient-to-b from-white to-[#F9F6F0]">
             <div class="space-y-1">
-                <p class="text-[9px] tracking-[0.3em] uppercase text-gray-400">Our Story In Frames</p>
-                <h4 class="text-md font-serif-chic italic font-light text-[#4A4741]">The Prewedding Gallery</h4>
-                <div class="h-[1px] w-6 bg-gray-300 mx-auto mt-2"></div>
+                <h4 class="font-serif-chic italic text-xl text-gray-800 tracking-wide">Leave a Wedding Wish</h4>
+                <p class="text-[10px] uppercase tracking-widest text-gray-400">Send your warm thoughts to the newlyweds</p>
             </div>
             
-            <div class="space-y-3 max-w-xs mx-auto pt-2">
-                <div class="w-full aspect-[16/10] bg-white border border-gray-200 flex items-center justify-center text-gray-400 text-[10px] tracking-widest uppercase p-2 grayscale">Prewedding Story Single #01</div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="w-full aspect-square bg-white border border-gray-200 flex items-center justify-center text-gray-400 text-[9px] tracking-widest uppercase p-2 grayscale">Portrait #02</div>
-                    <div class="w-full aspect-square bg-white border border-gray-200 flex items-center justify-center text-gray-400 text-[9px] tracking-widest uppercase p-2 grayscale">Portrait #03</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 px-8 bg-[#FBFBFA] border-y border-gray-100 text-center space-y-8">
-            <div class="space-y-2">
-                <h4 class="text-xs font-semibold tracking-[0.2em] uppercase text-gray-700">The Holy Matrimony</h4>
-                <p class="text-[11px] font-light text-gray-500">09:00 AM — 11:00 AM</p>
-                <p class="text-[11px] font-light text-gray-500">Gereja Katedral Estetik</p>
-            </div>
-            <div class="w-6 h-[1px] bg-gray-300 mx-auto"></div>
-            <div class="space-y-2">
-                <h4 class="text-xs font-semibold tracking-[0.2em] uppercase text-gray-700">The Wedding Dinner</h4>
-                <p class="text-[11px] font-light text-gray-500">06:00 PM — End</p>
-                <p class="text-[11px] font-light text-gray-500">The Glass House Pavillion</p>
-            </div>
-            <a href="#" target="_blank" class="inline-block mt-4 px-6 py-2 bg-[#4A4741] text-white text-[10px] uppercase tracking-widest transition hover:bg-[#363430]">View On Maps</a>
-        </section>
-
-        <section class="py-16 px-8 text-center space-y-8 bg-white">
-            <div class="space-y-2">
-                <p class="text-[9px] tracking-[0.3em] uppercase text-gray-400">Wishes & Blessings</p>
-                <h4 class="text-md font-serif-chic italic font-light text-[#4A4741]">Leave a Message</h4>
-                <div class="h-[1px] w-6 bg-gray-300 mx-auto"></div>
-            </div>
-            
-            <form class="space-y-4 text-left max-w-xs mx-auto">
+            <form class="space-y-4 text-left max-w-sm mx-auto bg-[#F4EFE6]/30 p-6 rounded-xl border border-gray-200">
                 <div>
-                    <input type="text" placeholder="YOUR NAME" class="w-full p-3 bg-transparent border-b border-gray-300 rounded-none text-xs text-gray-800 placeholder-gray-400 tracking-widest focus:outline-none focus:border-gray-800 transition">
+                    <label class="block text-[10px] uppercase tracking-widest font-semibold text-gray-600 mb-1">Your Name :</label>
+                    <input type="text" placeholder="Enter your full name..." class="w-full p-3 bg-white border border-gray-200 rounded text-xs text-gray-800 placeholder-gray-300 focus:outline-none focus:border-gray-500 transition">
                 </div>
                 <div>
-                    <textarea rows="3" placeholder="YOUR WISHES AND BLESSINGS..." class="w-full p-3 bg-transparent border-b border-gray-300 rounded-none text-xs text-gray-800 placeholder-gray-400 tracking-widest focus:outline-none focus:border-gray-800 transition"></textarea>
+                    <label class="block text-[10px] uppercase tracking-widest font-semibold text-gray-600 mb-1">Blessings & Wishes :</label>
+                    <textarea rows="3" placeholder="May your love grow stronger each day..." class="w-full p-3 bg-white border border-gray-200 rounded text-xs text-gray-800 placeholder-gray-300 focus:outline-none focus:border-gray-500 transition"></textarea>
                 </div>
-                <button type="button" class="w-full py-3 bg-[#4A4741] hover:bg-[#2c2a29] text-white text-[10px] uppercase tracking-[0.2em] rounded-none transition">Send Wishes</button>
+                <button type="button" class="w-full py-3 bg-[#2c2a29] hover:bg-gray-800 text-white text-[10px] uppercase tracking-widest font-medium rounded transition shadow-sm">Send Warm Wishes</button>
             </form>
         </section>
-
     </main>
 
     <script>
@@ -140,6 +139,7 @@
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
             document.getElementById("hari").innerText = days < 10 ? "0" + days : days;
             document.getElementById("jam").innerText = hours < 10 ? "0" + hours : hours;
             document.getElementById("menit").innerText = minutes < 10 ? "0" + minutes : minutes;
