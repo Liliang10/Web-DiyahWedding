@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     <title>The Wedding of Adrian & Nadia - Minimalist Modern</title>
     <style>
@@ -152,13 +153,99 @@
     </main>
 
     <script>
+        const SUPABASE_URL = "https://wwpdtspezkhtszyoyukm.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3cGR0c3BlemtodHN6eW95dWttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4OTQ0OTUsImV4cCI6MjA5ODQ3MDQ5NX0.5MFD5yA8ip4IeqGLWTaDJDOPji7zrq9AWxAb7_C5V74";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const pesananId = urlParams.get('id');
+        const namaTamu = urlParams.get('to');
+
+        if (namaTamu) { 
+            document.getElementById('nama-tamu-cover').innerText = decodeURIComponent(namaTamu); 
+        }
+
+        async function fetchDataPengantin() {
+            if (!pesananId) return;
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('pesanan_undangan')
+                    .select('*')
+                    .eq('id', pesananId)
+                    .single();
+
+                if (error) throw error;
+
+                if (data) {
+                    const gabunganNama = `${data.nama_pria} & ${data.nama_wanita}`;
+                    document.title = `The Wedding of ${gabunganNama}`;
+                    
+                    document.querySelector("#cover-section h1").innerText = gabunganNama;
+                    document.querySelector("main h2").innerText = gabunganNama;
+
+                    const namaPengantinNodes = document.querySelectorAll("main h4");
+                    const infoOrangTuaNodes = document.querySelectorAll("main h4 + p");
+
+                    if(namaPengantinNodes.length >= 2) {
+                        namaPengantinNodes[0].innerText = data.nama_pria;
+                        infoOrangTuaNodes[0].innerText = `Putra dari Bapak ${data.ayah_pria} & Ibu ${data.ibu_pria}`;
+
+                        namaPengantinNodes[1].innerText = data.nama_wanita;
+                        infoOrangTuaNodes[1].innerText = `Putri dari Bapak ${data.ayah_wanita} & Ibu ${data.ibu_wanita}`;
+                    }
+
+                    const infoAcaraNodes = document.querySelectorAll("span + p + p");
+                    const infoWaktuNodes = document.querySelectorAll("span + p");
+                    
+                    if(infoWaktuNodes.length >= 2) {
+                        infoWaktuNodes[1].innerText = data.waktu_acara || '-';
+                        infoAcaraNodes[1].innerText = data.lokasi_acara || '-';
+                    }
+
+                    const norekNode = document.querySelector(".bg-\\[\\#F9F6F0\\] p.text-lg");
+                    if (norekNode && data.no_rekening) {
+                        norekNode.innerText = data.no_rekening;
+                        const namaRekNode = norekNode.nextElementSibling;
+                        if(namaRekNode) namaRekNode.innerText = `a.n. ${data.nama_pria}`;
+                    }
+
+                    if (data.tanggal_acara) {
+                        startCountdown(data.tanggal_acara);
+                    }
+                }
+            } catch (err) {
+                console.error("Gagal memuat data undangan:", err.message);
+            }
+        }
+
+        function startCountdown(tanggalAcara) {
+            const targetDate = new Date(`${tanggalAcara} 08:00:00`).getTime();
+            
+            const timerInterval = setInterval(() => {
+                const now = new Date().getTime(); 
+                const distance = targetDate - now;
+                
+                if (distance < 0) {
+                    clearInterval(timerInterval);
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("hari").innerText = days < 10 ? "0" + days : days;
+                document.getElementById("jam").innerText = hours < 10 ? "0" + hours : hours;
+                document.getElementById("menit").innerText = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById("detik").innerText = seconds < 10 ? "0" + seconds : seconds;
+            }, 1000);
+        }
+
         const btnBuka = document.getElementById('btn-buka');
         const coverSection = document.getElementById('cover-section');
         const music = document.getElementById('bg-music');
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const namaTamu = urlParams.get('to');
-        if (namaTamu) { document.getElementById('nama-tamu-cover').innerText = decodeURIComponent(namaTamu); }
 
         btnBuka.addEventListener('click', () => {
             music.play().catch(e => console.log("Audio block enabled"));
@@ -166,19 +253,7 @@
             setTimeout(() => { coverSection.style.display = 'none'; }, 1000);
         });
 
-        const targetDate = new Date("Nov 08, 2026 09:00:00").getTime();
-        setInterval(() => {
-            const now = new Date().getTime(); const distance = targetDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("hari").innerText = days < 10 ? "0" + days : days;
-            document.getElementById("jam").innerText = hours < 10 ? "0" + hours : hours;
-            document.getElementById("menit").innerText = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("detik").innerText = seconds < 10 ? "0" + seconds : seconds;
-        }, 1000);
+        window.onload = fetchDataPengantin;
     </script>
 </body>
 </html>

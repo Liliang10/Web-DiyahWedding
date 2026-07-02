@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Diyah Wedding</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-gray-100 font-sans p-6">
+
+    <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">Daftar Pesanan Undangan</h1>
+            <button onclick="loadData()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">
+                Refresh Data
+            </button>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse bg-white">
+                <thead>
+                    <tr class="bg-gray-800 text-white">
+                        <th class="p-3 border">No</th>
+                        <th class="p-3 border">Tanggal Acara</th>
+                        <th class="p-3 border">Waktu</th>
+                        <th class="p-3 border">Lokasi</th>
+                        <th class="p-3 border">No Rekening</th>
+                        <th class="p-3 border">Aksi (Link Undangan)</th>
+                    </tr>
+                </thead>
+                <tbody id="tabel-pesanan" class="text-gray-700">
+                    <tr>
+                        <td colspan="6" class="p-4 text-center text-gray-500">Sedang memuat data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = "https://wwpdtspezkhtszyoyukm.supabase.co"; 
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3cGR0c3BlemtodHN6eW95dWttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4OTQ0OTUsImV4cCI6MjA5ODQ3MDQ5NX0.5MFD5yA8ip4IeqGLWTaDJDOPji7zrq9AWxAb7_C5V74"; 
+
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function loadData() {
+            const tbody = document.getElementById("tabel-pesanan");
+            tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-gray-500">Memuat data...</td></tr>`;
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('pesanan_undangan')
+                    .select('*');
+
+                if (error) throw error;
+
+                if (data.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-gray-500">Belum ada pesanan masuk.</td></tr>`;
+                    return;
+                }
+
+                tbody.innerHTML = "";
+
+                data.forEach((pesanan, index) => {
+                    const linkUndangan = `${window.location.origin}/undangan-modern.html?id=${pesanan.id}`;
+
+                    tbody.innerHTML += `
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-3 border">${index + 1}</td>
+                            <td class="p-3 border">${pesanan.tanggal_acara || '-'}</td>
+                            <td class="p-3 border">${pesanan.waktu_acara || '-'}</td>
+                            <td class="p-3 border">${pesanan.lokasi_acara || '-'}</td>
+                            <td class="p-3 border">${pesanan.no_rekening || '-'}</td>
+                            <td class="p-3 border">
+                                <a href="${linkUndangan}" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1.5 rounded font-semibold shadow">
+                                    Buka Undangan ➔
+                                </a>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+            } catch (error) {
+                console.error("Error ambil data:", error);
+                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-red-500">Gagal mengambil data: ${error.message}</td></tr>`;
+            }
+        }
+
+        window.onload = loadData;
+    </script>
+</body>
+</html>
