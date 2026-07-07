@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Patrick+Hand&display=swap" rel="stylesheet">
     <title>The Wedding of Kiko & Cici - Cute Cartoon Style</title>
     <style>
@@ -38,8 +39,8 @@
         
         <section class="relative bg-[#FFEAEA] py-16 text-center px-4 rounded-b-[3rem] shadow-inner">
             <h2 class="font-hand text-4xl text-[#FF6B6B] mb-2">The Wedding of</h2>
-            <h3 class="text-4xl font-extrabold text-[#634444] tracking-wide">Kiko & Cici</h3>
-            <p class="text-sm text-[#FF8E8E] font-medium mt-1">Sabtu, 17 Oktober 2026</p>
+            <h3 id="judul-atas-kartun" class="text-4xl font-extrabold text-[#634444] tracking-wide">Kiko & Cici</h3>
+            <p id="tanggal-atas-kartun" class="text-sm text-[#FF8E8E] font-medium mt-1">Sabtu, 17 Oktober 2026</p>
             
             <div class="w-44 h-44 mx-auto mt-6 bg-[#FFF5F5] p-3 rounded-full border-4 border-white shadow-md overflow-hidden">
                 <img src="images/cartoon_couple.png" alt="Kiko & Cici" class="w-full h-full object-cover rounded-full">
@@ -64,11 +65,8 @@
                 <div class="w-28 h-28 mx-auto rounded-full border-4 border-[#FFB4B4] overflow-hidden bg-white shadow">
                     <img src="images/groom.png" alt="Kiko" class="w-full h-full object-cover">
                 </div>
-                <h5 class="text-xl font-bold text-[#634444]">Rizky Aditya, S.Kom (Kiko)</h5>
-                <p class="text-xs text-gray-500 px-4">Putra pertama dari Bapak Bambang Wijaya & Ibu Endang Sulastri</p>
-                <div class="flex justify-center gap-2 text-xs text-[#FF6B6B]">
-                    <span>📸 @kiko_dummy</span>
-                </div>
+                <h5 id="nama-pria-kartun" class="text-xl font-bold text-[#634444]">Rizky Aditya, S.Kom (Kiko)</h5>
+                <p id="ortu-pria-kartun" class="text-xs text-gray-500 px-4">Putra pertama dari Bapak Wijaya & Ibu Sulastri</p>
             </div>
 
             <div class="font-hand text-center text-4xl text-[#FFB4B4] my-2">&</div>
@@ -77,35 +75,25 @@
                 <div class="w-28 h-28 mx-auto rounded-full border-4 border-[#FFB4B4] overflow-hidden bg-white shadow">
                     <img src="images/bride.png" alt="Cici" class="w-full h-full object-cover">
                 </div>
-                <h5 class="text-xl font-bold text-[#634444]">Citra Lestari, S.E (Cici)</h5>
-                <p class="text-xs text-gray-500 px-4">Putri kedua dari Bapak Hermawan Prasetyo & Ibu Siti Aminah</p>
-                <div class="flex justify-center gap-2 text-xs text-[#FF6B6B]">
-                    <span>📸 @cici_dummy</span>
-                </div>
+                <h5 id="nama-wanita-kartun" class="text-xl font-bold text-[#634444]">Citra Lestari, S.E (Cici)</h5>
+                <p id="ortu-wanita-kartun" class="text-xs text-gray-500 px-4">Putri kedua dari Bapak Prasetyo & Ibu Aminah</p>
             </div>
         </section>
 
         <section class="p-6 text-center space-y-6">
             <h4 class="font-hand text-3xl text-[#FF6B6B]">Waktu & Tempat Acara</h4>
             
-            <div class="bg-amber-50/60 p-5 rounded-2xl border border-amber-200/50 space-y-2 shadow-sm">
-                <span class="bg-amber-200 text-amber-800 text-[10px] font-bold px-3 py-0.5 rounded-full uppercase">Akad Nikah</span>
-                <p class="text-md font-bold text-[#634444] mt-1">Pukul 08.00 - 10.00 WIB</p>
-                <p class="text-xs text-gray-500">Bertempat di Kediaman Mempelai Wanita</p>
-            </div>
-
             <div class="bg-[#FFEAEA]/60 p-5 rounded-2xl border border-[#FFB4B4]/50 space-y-2 shadow-sm">
-                <span class="bg-[#FFB4B4] text-white text-[10px] font-bold px-3 py-0.5 rounded-full uppercase">Resepsi Pernikahan</span>
-                <p class="text-md font-bold text-[#634444] mt-1">Pukul 11.00 - 16.00 WIB</p>
-                <p class="text-xs text-gray-600 font-semibold">Gedung Serbaguna Bahagia</p>
-                <p class="text-[11px] text-gray-500">Jl. Melati No. 123, Kota Indah</p>
+                <span class="bg-[#FFB4B4] text-white text-[10px] font-bold px-3 py-0.5 rounded-full uppercase">Waktu Resepsi</span>
+                <p id="waktu-kartun" class="text-md font-bold text-[#634444] mt-1">Pukul 11.00 - 16.00 WIB</p>
+                <p id="lokasi-kartun" class="text-xs text-gray-600 font-semibold">Gedung Serbaguna Bahagia</p>
             </div>
 
             <div class="grid grid-cols-4 gap-2 px-4 pt-4 text-center">
-                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="hari" class="text-lg font-bold">0</span><p class="text-[9px] uppercase">Hari</p></div>
-                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="jam" class="text-lg font-bold">0</span><p class="text-[9px] uppercase">Jam</p></div>
-                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="menit" class="text-lg font-bold">0</span><p class="text-[9px] uppercase">Menit</p></div>
-                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="detik" class="text-lg font-bold">0</span><p class="text-[9px] uppercase">Detik</p></div>
+                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="hari" class="text-lg font-bold">00</span><p class="text-[9px] uppercase">Hari</p></div>
+                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="jam" class="text-lg font-bold">00</span><p class="text-[9px] uppercase">Jam</p></div>
+                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="menit" class="text-lg font-bold">00</span><p class="text-[9px] uppercase">Menit</p></div>
+                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="detik" class="text-lg font-bold">00</span><p class="text-[9px] uppercase">Detik</p></div>
             </div>
         </section>
 
@@ -119,24 +107,12 @@
                 <div class="bg-white p-5 rounded-2xl shadow-sm border border-[#FFD2D2] text-left space-y-1 relative overflow-hidden">
                     <div class="absolute top-0 right-0 bg-[#FFB4B4] text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">BANK BCA</div>
                     <p class="text-xs text-gray-400 font-bold uppercase tracking-wider pt-2">No. Rekening</p>
-                    <p class="text-lg font-bold text-[#634444] tracking-wide">1234567890</p>
-                    <p class="text-xs text-gray-500">a.n. Rizky Aditya</p>
-                </div>
-
-                <div class="bg-white p-5 rounded-2xl shadow-sm border border-[#FFD2D2] text-left space-y-1 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-[#FFB4B4] text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">BANK MANDIRI</div>
-                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider pt-2">No. Rekening</p>
-                    <p class="text-lg font-bold text-[#634444] tracking-wide font-mono">0987654321</p>
-                    <p class="text-xs text-gray-500">a.n. Citra Lestari</p>
-                </div>
-
-                <div class="bg-white p-5 rounded-2xl shadow-sm border border-[#FFD2D2] text-left space-y-2">
-                    <span class="inline-block bg-[#FFEAEA] text-[#FF6B6B] text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">📍 Alamat Pengiriman Kado</span>
-                    <p class="text-sm font-bold text-[#634444]">Rumah Mempelai Wanita (Cici)</p>
-                    <p class="text-xs text-gray-500 leading-relaxed">Jl. Melati No. 123, RT 05/RW 02, Kecamatan Mawar, Kota Indah, Jawa Barat (Samping Toko Kue Sejahtera)</p>
+                    <p id="norek-kartun" class="text-lg font-bold text-[#634444] tracking-wide">1234567890</p>
+                    <p id="an-kartun" class="text-xs text-gray-500">a.n. Rizky Aditya</p>
                 </div>
             </div>
         </section>
+
         <section class="py-10 px-6 text-center space-y-6 bg-gradient-to-b from-white to-[#FFF5F5]">
             <div class="space-y-1">
                 <h4 class="text-[#FF6B6B] font-bold font-hand text-3xl">💌 Berikan Doa Restu 💌</h4>
@@ -146,25 +122,148 @@
             <form class="space-y-3 text-left max-w-sm mx-auto bg-[#FFF0F0] p-5 rounded-3xl border border-[#FFD2D2]">
                 <div>
                     <label class="block text-xs font-bold text-[#634444] mb-1 pl-1">Nama Kamu :</label>
-                    <input type="text" placeholder="Tulis namamu di sini..." class="w-full p-3 bg-white border border-[#FFD2D2] rounded-2xl text-sm text-[#634444] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFB4B4]">
+                    <input type="text" id="input-nama-tamu" placeholder="Tulis namamu di sini..." class="w-full p-3 bg-white border border-[#FFD2D2] rounded-2xl text-sm text-[#634444] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFB4B4]">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-[#634444] mb-1 pl-1">Pesan & Doa :</label>
-                    <textarea rows="3" placeholder="Selamat menempuh hidup baru ya!..." class="w-full p-3 bg-white border border-[#FFD2D2] rounded-2xl text-sm text-[#634444] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFB4B4]"></textarea>
+                    <textarea rows="3" id="input-isi-ucapan" placeholder="Selamat menempuh hidup baru ya!..." class="w-full p-3 bg-white border border-[#FFD2D2] rounded-2xl text-sm text-[#634444] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFB4B4]"></textarea>
                 </div>
-                <button type="button" class="w-full py-3 bg-[#FF6B6B] hover:bg-[#FF5252] text-white font-bold text-xs uppercase tracking-wider rounded-2xl shadow-sm transition transform active:scale-95">✨ Kirim Doa Manis ✨</button>
+                <button type="button" id="btn-kirim-ucapan" class="w-full py-3 bg-[#FF6B6B] hover:bg-[#FF5252] text-white font-bold text-xs uppercase tracking-wider rounded-2xl shadow-sm transition transform active:scale-95">✨ Kirim Doa Manis ✨</button>
             </form>
+
+            <div class="max-w-sm mx-auto mt-6 bg-white p-5 rounded-3xl border border-[#FFD2D2] text-left space-y-4">
+                <h4 class="text-xs font-bold uppercase text-[#FF6B6B] border-b pb-2">Daftar Doa & Ucapan</h4>
+                <div id="container-ucapan" class="space-y-3 max-h-60 overflow-y-auto divide-y divide-gray-100 text-left">
+                    <p class="text-xs text-gray-400 italic text-center py-4">Belum ada ucapan. Jadilah yang pertama memberikan doa restu.</p>
+                </div>
+            </div>
         </section>
     </main>
 
-    <script>
-        const btnBuka = document.getElementById('btn-buka');
-        const coverSection = document.getElementById('cover-section');
-        const music = document.getElementById('bg-music');
+<script>
+        const SUPABASE_URL = "https://wwpdtspezkhtszyoyukm.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3cGR0c3BlemtodHN6eW95dWttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4OTQ0OTUsImV4cCI6MjA5ODQ3MDQ5NX0.5MFD5yA8ip4IeqGLWTaDJDOPji7zrq9AWxAb7_C5V74";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         const urlParams = new URLSearchParams(window.location.search);
+        const pesananId = urlParams.get('id'); 
         const namaTamu = urlParams.get('to');
-        if (namaTamu) { document.getElementById('nama-tamu-cover').innerText = decodeURIComponent(namaTamu); }
+
+        if (namaTamu) { 
+            const namaClean = decodeURIComponent(namaTamu);
+            document.getElementById('nama-tamu-cover').innerText = namaClean; 
+            document.getElementById('input-nama-tamu').value = namaClean;
+        }
+
+        async function fetchDataPengantin() {
+            if (!pesananId) return;
+            try {
+                const { data, error } = await supabaseClient
+                    .from('pesanan_undangan')
+                    .select('*')
+                    .eq('id', pesananId)
+                    .single();
+
+                if (error) throw error;
+                if (data) {
+                    const gabunganNama = `${data.nama_pria} & ${data.nama_wanita}`;
+                    document.title = `The Wedding of ${gabunganNama}`;
+                    document.querySelector("#cover-section h1").innerText = gabunganNama;
+                    document.getElementById("judul-atas-kartun").innerText = gabunganNama;
+
+                    document.getElementById("nama-pria-kartun").innerText = data.nama_pria;
+                    document.getElementById("ortu-pria-kartun").innerText = `Putra pertama dari Bapak ${data.ayah_pria} & Ibu ${data.ibu_pria}`;
+                    document.getElementById("nama-wanita-kartun").innerText = data.nama_wanita;
+                    document.getElementById("ortu-wanita-kartun").innerText = `Putri kedua dari Bapak ${data.ayah_wanita} & Ibu ${data.ibu_wanita}`;
+
+                    if (data.waktu_acara) document.getElementById("waktu-kartun").innerText = data.waktu_acara;
+                    if (data.lokasi_acara) document.getElementById("lokasi-kartun").innerText = data.lokasi_acara;
+                    if (data.no_rekening) document.getElementById("norek-kartun").innerText = data.no_rekening;
+                    if (data.nama_pria) document.getElementById("an-kartun").innerText = `a.n. ${data.nama_pria}`;
+                    if (data.tanggal_acara) {
+                        document.getElementById("tanggal-atas-kartun").innerText = data.tanggal_acara;
+                        startCountdown(data.tanggal_acara);
+                    }
+                }
+            } catch (err) {
+                console.error("Gagal memuat data pengantin:", err.message);
+            }
+        }
+
+        async function loadDaftarUcapan() {
+            if (!pesananId) return;
+            try {
+                const { data, error } = await supabaseClient
+                    .from('ucapan_undangan')
+                    .select('*')
+                    .eq('pesanan_id', pesananId)
+                    .order('id', { ascending: false });
+
+                if (error) throw error;
+
+                const container = document.getElementById('container-ucapan');
+                if (data && data.length > 0) {
+                    container.innerHTML = data.map(u => `
+                        <div class="pt-3">
+                            <p class="text-xs font-bold text-gray-800">${u.nama_tamu}</p>
+                            <p class="text-xs text-gray-600 font-light mt-0.5 leading-relaxed">${u.isi_ucapan}</p>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = `<p class="text-xs text-gray-400 italic text-center py-4">Belum ada ucapan. Jadilah yang pertama memberikan doa restu.</p>`;
+                }
+            } catch (err) {
+                console.error("Gagal memuat daftar ucapan:", err.message);
+            }
+        }
+
+        document.getElementById('btn-kirim-ucapan').addEventListener('click', async () => {
+            const nama = document.getElementById('input-nama-tamu').value.trim();
+            const ucapan = document.getElementById('input-isi-ucapan').value.trim();
+
+            if (!pesananId) {
+                alert("Gagal mengirim, ID Undangan tidak valid.");
+                return;
+            }
+            if (!nama || !ucapan) {
+                alert("Harap isi nama dan ucapan doa Anda.");
+                return;
+            }
+
+            try {
+                const { error } = await supabaseClient
+                    .from('ucapan_undangan')
+                    .insert([
+                        { pesanan_id: pesananId, nama_tamu: nama, isi_ucapan: ucapan }
+                    ]);
+
+                if (error) throw error;
+
+                document.getElementById('input-isi-ucapan').value = '';
+                alert("Ucapan Anda berhasil dikirim!");
+                
+                loadDaftarUcapan();
+            } catch (err) {
+                alert("Gagal mengirim ucapan: " + err.message);
+            }
+        });
+
+        function startCountdown(tanggalAcara) {
+            const targetDate = new Date(`${tanggalAcara} 10:00:00`).getTime();
+            setInterval(() => {
+                const now = new Date().getTime(); const distance = targetDate - now;
+                if (distance < 0) return;
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById("hari").innerText = days;
+                document.getElementById("jam").innerText = hours;
+                document.getElementById("menit").innerText = minutes;
+                document.getElementById("detik").innerText = seconds;
+            }, 1000);
+        }
 
         btnBuka.addEventListener('click', () => {
             music.play().catch(e => console.log("Audio block active"));
@@ -172,19 +271,10 @@
             setTimeout(() => { coverSection.style.display = 'none'; }, 1000);
         });
 
-        const targetDate = new Date("Oct 17, 2026 10:00:00").getTime();
-        setInterval(() => {
-            const now = new Date().getTime(); const distance = targetDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            document.getElementById("hari").innerText = days;
-            document.getElementById("jam").innerText = hours;
-            document.getElementById("menit").innerText = minutes;
-            document.getElementById("detik").innerText = seconds;
-        }, 1000);
+        window.onload = () => {
+            fetchDataPengantin();
+            loadDaftarUcapan();
+        };
     </script>
 </body>
 </html>
