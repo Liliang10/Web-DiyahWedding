@@ -1,98 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Diyah Wedding</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-<body class="bg-gray-100 font-sans p-6">
+<body class="bg-gray-100 font-sans p-4 md:p-6">
 
-    <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl font-bold text-gray-800">Daftar Pesanan Undangan</h1>
-            <button onclick="loadData()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">
-                Refresh Data
+    <div class="max-w-6xl mx-auto bg-white p-4 md:p-6 rounded-xl shadow-md">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-gray-100 pb-4">
+            <div>
+                <h1 class="text-xl md:text-2xl font-bold text-gray-800">Daftar Pesanan Undangan</h1>
+                <p class="text-xs text-gray-500 mt-1">Kelola data klien dan generate link undangan digital otomatis</p>
+            </div>
+            <button onclick="loadData()" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2.5 rounded-lg shadow font-medium transition-colors">
+                🔄 Refresh Data
             </button>
         </div>
 
-        <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse bg-white">
+        <div class="hidden md:block overflow-x-auto rounded-lg border border-gray-200">
+            <table class="w-full text-left border-collapse bg-white text-sm">
                 <thead>
                     <tr class="bg-gray-800 text-white">
-                        <th class="p-3 border">No</th>
-                        <th class="p-3 border">Tanggal Acara</th>
-                        <th class="p-3 border">Waktu</th>
-                        <th class="p-3 border">Lokasi</th>
-                        <th class="p-3 border">No Rekening</th>
-                        <th class="p-3 border">Aksi (Link Undangan)</th>
+                        <th class="p-3 border-b font-semibold w-12 text-center">No</th>
+                        <th class="p-3 border-b font-semibold">Mempelai & Slug</th>
+                        <th class="p-3 border-b font-semibold">Waktu & Tempat Acara</th>
+                        <th class="p-3 border-b font-semibold">Kado Digital (Rekening)</th>
+                        <th class="p-3 border-b font-semibold text-center w-52">Aksi Link</th>
                     </tr>
                 </thead>
-                <tbody id="tabel-pesanan" class="text-gray-700">
+                <tbody id="pesanan-table-body" class="divide-y divide-gray-200">
                     <tr>
-                        <td colspan="6" class="p-4 text-center text-gray-500">Sedang memuat data...</td>
+                        <td colspan="5" class="p-8 text-center text-gray-400">Sedang memuat data...</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+        <div id="pesanan-cards-container" class="block md:hidden space-y-4">
+            <p class="text-center text-gray-400 py-8 text-sm">Sedang memuat data...</p>
+        </div>
     </div>
 
     <script>
-        const SUPABASE_URL = "https://wwpdtspezkhtszyoyukm.supabase.co"; 
-        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3cGR0c3BlemtodHN6eW95dWttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4OTQ0OTUsImV4cCI6MjA5ODQ3MDQ5NX0.5MFD5yA8ip4IeqGLWTaDJDOPji7zrq9AWxAb7_C5V74"; 
-
+        const SUPABASE_URL = "https://wwpdtspezkhtszyoyukm.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3cGR0c3BlemtodHN6eW95dWttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4OTQ0OTUsImV4cCI6MjA5ODQ3MDQ5NX0.5MFD5yA8ip4IeqGLWTaDJDOPji7zrq9AWxAb7_C5V74";
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         async function loadData() {
-            const tbody = document.getElementById("tabel-pesanan");
-            tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-gray-500">Memuat data...</td></tr>`;
+            const tbody = document.getElementById('pesanan-table-body');
+            const cardContainer = document.getElementById('pesanan-cards-container');
+            
+            const loadingHtml = `<p class="text-center text-gray-400 py-8 text-sm">Sedang mengambil data terbaru...</p>`;
+            if(tbody) tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-gray-400">Sedang mengambil data terbaru...</td></tr>`;
+            if(cardContainer) cardContainer.innerHTML = loadingHtml;
 
             try {
                 const { data, error } = await supabaseClient
                     .from('pesanan_undangan')
-                    .select('*');
+                    .select('*')
+                    .order('id', { ascending: false });
 
                 if (error) throw error;
 
-                if (data.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-gray-500">Belum ada pesanan masuk.</td></tr>`;
+                if (!data || data.length === 0) {
+                    const kosongHtml = `<tr><td colspan="5" class="p-8 text-center text-gray-400">Belum ada data pesanan masuk.</td></tr>`;
+                    if(tbody) tbody.innerHTML = kosongHtml;
+                    if(cardContainer) cardContainer.innerHTML = `<p class="text-center text-gray-400 py-8 text-sm">Belum ada data pesanan masuk.</p>`;
                     return;
                 }
 
-                tbody.innerHTML = "";
+                if(tbody) tbody.innerHTML = '';
+                if(cardContainer) cardContainer.innerHTML = '';
 
                 data.forEach((pesanan, index) => {
-                    const tema = pesanan.tema_undangan || 'modern'; 
                     let fileTemplate = 'undangan-modern.html';
+                    let namaTema = 'Minimalist Modern';
+                    let warnaBadge = 'bg-emerald-50 text-emerald-700 border-emerald-200';
 
-                    if (tema === 'tradisional' || tema === 'traditional') {
+                    if (pesanan.id % 3 === 2) {
                         fileTemplate = 'undangan-tradisional.html';
-                    } else if (tema === 'kartun' || tema === 'cartoon') {
+                        namaTema = 'Traditional Royal';
+                        warnaBadge = 'bg-amber-50 text-amber-700 border-amber-200';
+                    } else if (pesanan.id % 3 === 0) {
                         fileTemplate = 'undangan-kartun.html';
+                        namaTema = 'Cute Cartoon';
+                        warnaBadge = 'bg-rose-50 text-rose-700 border-rose-200';
                     }
 
-                    const linkUndangan = `${window.location.origin}/${fileTemplate}?id=${pesanan.id}`;
+                    const linkUndanganBase = `${window.location.origin}/${fileTemplate}?slug=${pesanan.slug}&to=Tamu%20Undangan`;
 
-                    tbody.innerHTML += `
-                        <tr class="border-b hover:bg-gray-50">
-                            <td class="p-3 border">${index + 1}</td>
-                            <td class="p-3 border">${pesanan.tanggal_acara || '-'}</td>
-                            <td class="p-3 border">${pesanan.waktu_acara || '-'}</td>
-                            <td class="p-3 border">${pesanan.lokasi_acara || '-'}</td>
-                            <td class="p-3 border">${pesanan.no_rekening || '-'}</td>
-                            <td class="p-3 border">
-                                <a href="${linkUndangan}" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1.5 rounded font-semibold shadow">
-                                    Buka Undangan (${tema}) ➔
+                    let tanggalTampil = pesanan.tanggal_acara || '-';
+                    if(pesanan.tanggal_acara) {
+                        try {
+                            const opsi = { year: 'numeric', month: 'long', day: 'numeric' };
+                            tanggalTampil = new Date(pesanan.tanggal_acara).toLocaleDateString('id-ID', opsi);
+                        } catch(e) {}
+                    }
+
+                    if(tbody) {
+                        tbody.innerHTML += `
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="p-3 border-b text-center text-gray-500">${index + 1}</td>
+                                <td class="p-3 border-b">
+                                    <div class="font-bold text-gray-800">${pesanan.nama_pria || '-'} & ${pesanan.nama_wanita || '-'}</div>
+                                    <div class="text-xs text-gray-400 mt-0.5">slug: <span class="bg-gray-100 px-1 py-0.5 rounded text-gray-600 font-mono">${pesanan.slug || '-'}</span></div>
+                                </td>
+                                <td class="p-3 border-b text-xs space-y-0.5">
+                                    <div class="text-gray-700 font-semibold">📅 ${tanggalTampil} (${pesanan.waktu_acara || '-'})</div>
+                                    <div class="text-gray-500 truncate max-w-xs">📍 ${pesanan.lokasi_acara || '-'}</div>
+                                </td>
+                                <td class="p-3 border-b">
+                                    <div class="text-sm font-medium text-gray-700">${pesanan.no_rekening || '-'}</div>
+                                    <div class="text-xs text-gray-400">a.n. ${pesanan.nama_pria || 'Pengantin'}</div>
+                                </td>
+                                <td class="p-3 border-b text-center">
+                                    <div class="flex flex-col gap-1 items-center">
+                                        <span class="text-[10px] px-2 py-0.5 border rounded-full font-medium ${warnaBadge}">${namaTema}</span>
+                                        <a href="${linkUndanganBase}" target="_blank" class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-2 rounded-lg font-medium shadow-sm transition-colors">
+                                            Buka Undangan ➔
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+                    }
+
+                    if(cardContainer) {
+                        cardContainer.innerHTML += `
+                            <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3 relative overflow-hidden">
+                                <div class="absolute top-0 right-0">
+                                    <span class="text-[9px] px-2.5 py-1 border-b border-l rounded-bl-xl font-semibold uppercase tracking-wider block ${warnaBadge}">${namaTema}</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="text-xs text-gray-400 font-bold font-mono">#${index + 1}</span>
+                                    <h3 class="text-base font-bold text-gray-800 mt-0.5">${pesanan.nama_pria || '-'} & ${pesanan.nama_wanita || '-'}</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono mt-0.5">slug: ${pesanan.slug || '-'}</p>
+                                </div>
+
+                                <div class="bg-gray-50 p-2.5 rounded-lg text-xs space-y-1.5 border border-gray-100">
+                                    <div class="text-gray-700"><span class="font-semibold text-blue-600">📅 Waktu:</span> ${tanggalTampil} (${pesanan.waktu_acara || '-'})</div>
+                                    <div class="text-gray-700"><span class="font-semibold text-blue-600">📍 Tempat:</span> ${pesanan.lokasi_acara || '-'}</div>
+                                    <div class="text-gray-700"><span class="font-semibold text-blue-600">💳 Rekening:</span> ${pesanan.no_rekening || '-'} (a.n ${pesanan.nama_pria || 'Pengantin'})</div>
+                                </div>
+
+                                <a href="${linkUndanganBase}" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white text-xs py-2.5 rounded-lg font-semibold shadow transition-colors">
+                                    Lihat Live Web Undangan ➔
                                 </a>
-                            </td>
-                        </tr>
-                    `;
+                            </div>
+                        `;
+                    }
                 });
 
             } catch (error) {
                 console.error("Error ambil data:", error);
-                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-red-500">Gagal mengambil data: ${error.message}</td></tr>`;
+                const errorMsg = `Gagal mengambil data dari Supabase: ${error.message}`;
+                
+                if(tbody) tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-500 font-medium">${errorMsg}</td></tr>`;
+                if(cardContainer) cardContainer.innerHTML = `<div class="p-4 text-center text-red-500 text-sm font-medium border border-red-200 bg-red-50 rounded-xl">${errorMsg}</div>`;
             }
         }
 
