@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
-    <title>The Wedding of Adrian & Nadia - Minimalist Modern</title>
+    <title>The Wedding Invitation - Minimalist Modern</title>
     <style>
         .font-sans-clean { font-family: 'Montserrat', sans-serif; }
         .font-serif-chic { font-family: 'Playfair Display', serif; }
@@ -22,9 +22,9 @@
         <p class="text-[10px] tracking-[0.4em] uppercase text-gray-500 font-light">Wedding Invitation</p>
         
         <div class="space-y-4">
-            <h1 class="text-4xl md:text-5xl font-serif-chic italic font-normal tracking-wide text-[#2c2a29]">Adrian & Nadia</h1>
+            <h1 class="text-4xl md:text-5xl font-serif-chic italic font-normal tracking-wide text-[#2c2a29]">Loading...</h1>
             <div class="w-8 h-[1px] bg-gray-400 mx-auto my-4"></div>
-            <p class="text-xs tracking-[0.15em] text-gray-500 font-light">08 . 11 . 2026</p>
+            <p id="tanggal-acara-cover" class="text-xs tracking-[0.15em] text-gray-500 font-light">00 . 00 . 0000</p>
         </div>
 
         <div class="space-y-6 w-full max-w-xs">
@@ -42,10 +42,10 @@
         
         <section class="relative pt-20 pb-12 text-center px-6 bg-[#F4EFE6]">
             <span class="text-[10px] uppercase tracking-[0.4em] text-gray-500 block mb-3 font-light">The Wedding of</span>
-            <h2 class="text-4xl font-serif-chic italic font-normal mb-6">Adrian & Nadia</h2>
+            <h2 class="text-4xl font-serif-chic italic font-normal mb-6">Loading...</h2>
             
             <div class="w-full aspect-[4/5] mx-auto mt-8 bg-gray-100 shadow-sm overflow-hidden border-[12px] border-white">
-                <img src="images/modern_couple.png" alt="Adrian & Nadia" class="w-full h-full object-cover">
+                <img id="foto-prewedding-display" src="images/modern_couple.png" alt="Prewedding" class="w-full h-full object-cover">
             </div>
         </section>
 
@@ -63,17 +63,15 @@
             </div>
 
             <div class="text-center space-y-2">
-                <h4 class="text-lg font-normal tracking-wide text-gray-800">Adrian Pratama, S.T.</h4>
-                <p class="text-xs text-gray-500 max-w-xs mx-auto leading-relaxed font-light">Son of Mr. Baskoro Pratama & Mrs. Ratna Ningrum</p>
-                <a href="#" class="inline-block text-[9px] tracking-widest text-gray-400 hover:text-gray-600 uppercase font-light">@adrian_pratama</a>
+                <h4 class="text-lg font-normal tracking-wide text-gray-800">Nama Pria</h4>
+                <p class="text-xs text-gray-500 max-w-xs mx-auto leading-relaxed font-light">Putra dari Bapak & Ibu</p>
             </div>
 
             <div class="text-center font-serif-chic italic text-xl text-gray-300 my-2">and</div>
 
             <div class="text-center space-y-2">
-                <h4 class="text-lg font-normal tracking-wide text-gray-800">Nadia Utami, S.E.</h4>
-                <p class="text-xs text-gray-500 max-w-xs mx-auto leading-relaxed font-light">Daughter of Mr. Wawan Utami & Mrs. Dewi Sartika</p>
-                <a href="#" class="inline-block text-[9px] tracking-widest text-gray-400 hover:text-gray-600 uppercase font-light">@nadia_utami</a>
+                <h4 class="text-lg font-normal tracking-wide text-gray-800">Nama Wanita</h4>
+                <p class="text-xs text-gray-500 max-w-xs mx-auto leading-relaxed font-light">Putri dari Bapak & Ibu</p>
             </div>
         </section>
 
@@ -90,9 +88,14 @@
 
             <div class="space-y-2">
                 <span class="text-[9px] tracking-[0.25em] text-gray-400 uppercase font-medium">Wedding Reception</span>
-                <p class="text-lg font-light text-gray-800">12.00 - 15.00 WIB</p>
-                <p class="text-sm font-normal tracking-wide text-gray-800">The Glass House Ballroom</p>
-                <p class="text-xs text-gray-500 font-light">Jl. Senopati No. 45, Jakarta Selatan</p>
+                <p id="waktu-acara" class="text-lg font-light text-gray-800">12.00 - 15.00 WIB</p>
+                <p id="lokasi-acara" class="text-xs text-gray-500 font-light">Jl. Senopati No. 45, Jakarta Selatan</p>
+            </div>
+
+            <div class="pt-2">
+                <a id="btn-maps" href="#" target="_blank" class="inline-block px-5 py-2.5 bg-[#2c2a29] text-white text-[10px] uppercase tracking-widest font-light hover:bg-gray-800 transition-all shadow-sm">
+                    View on Google Maps
+                </a>
             </div>
 
             <div class="grid grid-cols-4 gap-2 px-4 pt-6 text-center max-w-xs mx-auto">
@@ -111,23 +114,11 @@
 
             <div class="max-w-sm mx-auto space-y-4">
                 <div class="bg-[#F9F6F0] p-6 text-left relative overflow-hidden border border-transparent hover:border-gray-300 transition-all duration-300">
-                    <div class="absolute top-0 right-0 bg-[#2c2a29] text-white text-[8px] font-light tracking-[0.2em] px-3 py-1 uppercase">Bank BCA</div>
+                    <div class="absolute top-0 right-0 bg-[#2c2a29] text-white text-[8px] font-light tracking-[0.2em] px-3 py-1 uppercase">Bank Transfer</div>
                     <p class="text-[9px] font-medium text-gray-400 uppercase tracking-widest pt-2">Account Number</p>
-                    <p class="text-lg font-light text-gray-800 tracking-wider mt-0.5">1234567890</p>
-                    <p class="text-xs text-gray-500 font-light">a.n. Adrian Pratama</p>
-                </div>
-
-                <div class="bg-[#F9F6F0] p-6 text-left relative overflow-hidden border border-transparent hover:border-gray-300 transition-all duration-300">
-                    <div class="absolute top-0 right-0 bg-[#2c2a29] text-white text-[8px] font-light tracking-[0.2em] px-3 py-1 uppercase">Bank Mandiri</div>
-                    <p class="text-[9px] font-medium text-gray-400 uppercase tracking-widest pt-2">Account Number</p>
-                    <p class="text-lg font-light text-gray-800 tracking-wider mt-0.5">0987654321</p>
-                    <p class="text-xs text-gray-500 font-light">a.n. Nadia Utami</p>
-                </div>
-
-                <div class="bg-[#F9F6F0] p-6 text-left space-y-2 border border-transparent hover:border-gray-300 transition-all duration-300">
-                    <span class="inline-block border border-[#2c2a29] text-[#2c2a29] text-[8px] font-medium tracking-widest px-2 py-0.5 uppercase">📍 Shipping Address</span>
-                    <p class="text-xs font-normal text-gray-800 mt-1">Nadia's Residence</p>
-                    <p class="text-xs text-gray-500 leading-relaxed font-light">Jl. Senopati No. 45, RT 01/RW 03, Kebayoran Baru, Jakarta Selatan, DKI Jakarta (Next to Serenity Coffee Shop)</p>
+                    
+                    <p id="display-no-rekening" class="text-lg font-light text-gray-800 tracking-wider mt-0.5">-</p>
+                    <p id="display-an-rekening" class="text-xs text-gray-500 font-light">a.n. Pengantin</p>
                 </div>
             </div>
         </section>
@@ -164,66 +155,41 @@
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3cGR0c3BlemtodHN6eW95dWttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4OTQ0OTUsImV4cCI6MjA5ODQ3MDQ5NX0.5MFD5yA8ip4IeqGLWTaDJDOPji7zrq9AWxAb7_C5V74";
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+        let globalPesananId = null; 
+
         const urlParams = new URLSearchParams(window.location.search);
-        const pesananId = urlParams.get('id'); 
+        const slugUndangan = urlParams.get('slug');
         const namaTamuURL = urlParams.get('to');
 
         if (namaTamuURL) { 
-            document.getElementById('nama-tamu-cover').innerText = decodeURIComponent(namaTamuURL); 
-            document.getElementById('input-nama-tamu').value = decodeURIComponent(namaTamuURL);
+            if(document.getElementById('nama-tamu-cover')) document.getElementById('nama-tamu-cover').innerText = decodeURIComponent(namaTamuURL); 
+            if(document.getElementById('input-nama-tamu')) document.getElementById('input-nama-tamu').value = decodeURIComponent(namaTamuURL);
         }
 
-        async function fetchDataPengantin() {
-            if (!pesananId) return;
-            try {
-                const { data, error } = await supabaseClient
-                    .from('pesanan_undangan')
-                    .select('*')
-                    .eq('id', pesananId)
-                    .single();
-
-                if (error) throw error;
-                if (data) {
-                    const gabunganNama = `${data.nama_pria} & ${data.nama_wanita}`;
-                    document.title = `The Wedding of ${gabunganNama}`;
-                    document.querySelector("#cover-section h1").innerText = gabunganNama;
-                    document.querySelector("main h2").innerText = gabunganNama;
-
-                    const namaPengantinNodes = document.querySelectorAll("main h4");
-                    const infoOrangTuaNodes = document.querySelectorAll("main h4 + p");
-                    if(namaPengantinNodes.length >= 2) {
-                        namaPengantinNodes[0].innerText = data.nama_pria;
-                        infoOrangTuaNodes[0].innerText = `Putra dari Bapak ${data.ayah_pria} & Ibu ${data.ibu_pria}`;
-                        namaPengantinNodes[1].innerText = data.nama_wanita;
-                        infoOrangTuaNodes[1].innerText = `Putri dari Bapak ${data.ayah_wanita} & Ibu ${data.ibu_wanita}`;
-                    }
-
-                    const infoWaktuNodes = document.querySelectorAll("span + p");
-                    const infoAcaraNodes = document.querySelectorAll("span + p + p");
-                    if(infoWaktuNodes.length >= 2) {
-                        infoWaktuNodes[1].innerText = data.waktu_acara || '-';
-                        infoAcaraNodes[1].innerText = data.lokasi_acara || '-';
-                    }
-
-                    const accountLabel = Array.from(document.querySelectorAll("p")).find(el => el.innerText.includes("ACCOUNT NUMBER"));
-                    if (accountLabel && data.no_rekening) {
-                        const norekNode = accountLabel.nextElementSibling;
-                        if (norekNode) {
-                            norekNode.innerText = data.no_rekening;
-                            const namaRekNode = norekNode.nextElementSibling;
-                            if (namaRekNode) namaRekNode.innerText = `a.n. ${data.nama_pria}`;
-                        }
-                    }
-
-                    if (data.tanggal_acara) startCountdown(data.tanggal_acara);
+        function startCountdown(tanggalAcara) {
+            const targetDate = new Date(`${tanggalAcara} 08:00:00`).getTime();
+            const timerInterval = setInterval(() => {
+                const now = new Date().getTime(); 
+                const distance = targetDate - now;
+                
+                if (distance < 0) { 
+                    clearInterval(timerInterval); 
+                    return; 
                 }
-            } catch (err) {
-                console.error("Gagal memuat data pengantin:", err.message);
-            }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                if(document.getElementById("hari")) document.getElementById("hari").innerText = days < 10 ? "0" + days : days;
+                if(document.getElementById("jam")) document.getElementById("jam").innerText = hours < 10 ? "0" + hours : hours;
+                if(document.getElementById("menit")) document.getElementById("menit").innerText = minutes < 10 ? "0" + minutes : minutes;
+                if(document.getElementById("detik")) document.getElementById("detik").innerText = seconds < 10 ? "0" + seconds : seconds;
+            }, 1000);
         }
 
-        async function loadDaftarUcapan() {
-            if (!pesananId) return;
+        async function loadDaftarUcapan(pesananId) {
             try {
                 const { data, error } = await supabaseClient
                     .from('ucapan_undangan')
@@ -234,9 +200,11 @@
                 if (error) throw error;
 
                 const container = document.getElementById('container-ucapan');
+                if (!container) return;
+
                 if (data && data.length > 0) {
                     container.innerHTML = data.map(u => `
-                        <div class="pt-3">
+                        <div class="pt-3 border-t border-gray-50 first:border-0">
                             <p class="text-xs font-semibold text-gray-800">${u.nama_tamu}</p>
                             <p class="text-xs text-gray-600 font-light mt-0.5 leading-relaxed">${u.isi_ucapan}</p>
                         </div>
@@ -253,8 +221,8 @@
             const nama = document.getElementById('input-nama-tamu').value.trim();
             const ucapan = document.getElementById('input-isi-ucapan').value.trim();
 
-            if (!pesananId) {
-                alert("Gagal mengirim, ID Undangan tidak valid.");
+            if (!globalPesananId) {
+                alert("Gagal mengirim, data pernikahan belum selesai dimuat.");
                 return;
             }
             if (!nama || !ucapan) {
@@ -266,56 +234,20 @@
                 const { error } = await supabaseClient
                     .from('ucapan_undangan')
                     .insert([
-                        { pesanan_id: pesananId, nama_tamu: nama, isi_ucapan: ucapan }
+                        { pesanan_id: globalPesananId, nama_tamu: nama, isi_ucapan: ucapan }
                     ]);
 
                 if (error) throw error;
 
                 document.getElementById('input-isi-ucapan').value = '';
                 alert("Ucapan Anda berhasil dikirim!");
-                
-                loadDaftarUcapan();
+                loadDaftarUcapan(globalPesananId);
             } catch (err) {
                 alert("Gagal mengirim ucapan: " + err.message);
             }
         });
 
-        function startCountdown(tanggalAcara) {
-            const targetDate = new Date(`${tanggalAcara} 08:00:00`).getTime();
-            const timerInterval = setInterval(() => {
-                const now = new Date().getTime(); const distance = targetDate - now;
-                if (distance < 0) { clearInterval(timerInterval); return; }
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById("hari").innerText = days < 10 ? "0" + days : days;
-                document.getElementById("jam").innerText = hours < 10 ? "0" + hours : hours;
-                document.getElementById("menit").innerText = minutes < 10 ? "0" + minutes : minutes;
-                document.getElementById("detik").innerText = seconds < 10 ? "0" + seconds : seconds;
-            }, 1000);
-        }
-
-        const btnBuka = document.getElementById('btn-buka');
-        const coverSection = document.getElementById('cover-section');
-        const music = document.getElementById('bg-music');
-
-        btnBuka.addEventListener('click', () => {
-            music.play().catch(e => console.log("Audio block enabled"));
-            coverSection.classList.add('opacity-0', '-translate-x-full');
-            setTimeout(() => { coverSection.style.display = 'none'; }, 1000);
-        });
-
-        window.onload = () => {
-            fetchDataPengantin();
-            loadDaftarUcapan();
-        };
-
         document.addEventListener("DOMContentLoaded", async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const slugUndangan = urlParams.get('slug');
-
             if (!slugUndangan) {
                 console.error("Slug undangan tidak ditemukan di URL.");
                 return;
@@ -327,24 +259,54 @@
 
                 if (response.ok && result.success) {
                     const data = result.data;
+                    globalPesananId = data.id;
+
+                    const gabunganNama = `${data.nama_pria} & ${data.nama_wanita}`;
+                    document.title = `The Wedding of ${gabunganNama}`;
+                    
+                    if (document.querySelector("#cover-section h1")) document.querySelector("#cover-section h1").innerText = gabunganNama;
+                    if (document.querySelector("main h2")) document.querySelector("main h2").innerText = gabunganNama;
 
                     const imgFoto = document.getElementById('foto-prewedding-display');
                     if (imgFoto && data.foto_prewedding) {
                         imgFoto.src = data.foto_prewedding;
                     }
 
-                    if (document.getElementById('nama-pria')) document.getElementById('nama-pria').innerText = data.nama_pria;
-                    if (document.getElementById('nama-wanita')) document.getElementById('nama-wanita').innerText = data.nama_wanita;
-                    if (document.getElementById('waktu-acara')) document.getElementById('waktu-acara').innerText = data.waktu_acara;
-                    if (document.getElementById('lokasi-acara')) document.getElementById('lokasi-acara').innerText = data.lokasi_acara;
+                    const namaPengantinNodes = document.querySelectorAll("main h4");
+                    const infoOrangTuaNodes = document.querySelectorAll("main h4 + p");
+                    if (namaPengantinNodes.length >= 2) {
+                        namaPengantinNodes[0].innerText = data.nama_pria;
+                        infoOrangTuaNodes[0].innerText = `Putra dari Bapak ${data.ayah_pria} & Ibu ${data.ibu_pria}`;
+                        
+                        namaPengantinNodes[1].innerText = data.nama_wanita;
+                        infoOrangTuaNodes[1].innerText = `Putri dari Bapak ${data.ayah_wanita} & Ibu ${data.ibu_wanita}`;
+                    }
+
+                    if (document.getElementById('waktu-acara')) document.getElementById('waktu-acara').innerText = data.waktu_acara || '-';
+                    if (document.getElementById('lokasi-acara')) document.getElementById('lokasi-acara').innerText = data.lokasi_acara || '-';
                     
                     const btnMaps = document.getElementById('btn-maps');
                     if (btnMaps && data.maps_link) {
                         btnMaps.href = data.maps_link;
                     }
 
-                    if (data.tanggal_acara) {
+                    // MEMASUKKAN DATA REKENING SECARA AMAN LEWAT ID SPESIFIK
+                    if (data.no_rekening) {
+                        if (document.getElementById('display-no-rekening')) document.getElementById('display-no-rekening').innerText = data.no_rekening;
+                        if (document.getElementById('display-an-rekening')) document.getElementById('display-an-rekening').innerText = `a.n. ${data.nama_pria}`;
                     }
+
+                    const txtTanggalCover = document.getElementById('tanggal-acara-cover');
+                    if (data.tanggal_acara && txtTanggalCover) {
+                        const tgl = new Date(data.tanggal_acara);
+                        const dd = String(tgl.getDate()).padStart(2, '0');
+                        const mm = String(tgl.getMonth() + 1).padStart(2, '0');
+                        const yyyy = tgl.getFullYear();
+                        txtTanggalCover.innerText = `${dd} . ${mm} . ${yyyy}`;
+                    }
+
+                    if (data.tanggal_acara) startCountdown(data.tanggal_acara);
+                    loadDaftarUcapan(data.id);
 
                 } else {
                     alert("Gagal memuat data undangan: " + result.message);
@@ -353,6 +315,20 @@
                 console.error("Terjadi kesalahan koneksi data:", error);
             }
         });
+
+        const btnBuka = document.getElementById('btn-buka');
+        const coverSection = document.getElementById('cover-section');
+        const music = document.getElementById('bg-music');
+
+        if (btnBuka && coverSection) {
+            btnBuka.addEventListener('click', () => {
+                if (music) {
+                    music.play().catch(e => console.log("Audio otomatis diblokir oleh browser."));
+                }
+                coverSection.classList.add('opacity-0', '-translate-x-full');
+                setTimeout(() => { coverSection.style.display = 'none'; }, 1000);
+            });
+        }
     </script>
 </body>
 </html>
