@@ -211,15 +211,30 @@
         }
 
         async function loadDaftarUcapan(pesananId) {
-            const { data, error } = await supabaseClient.from('ucapan_undangan').select('*').eq('pesanan_id', pesananId).order('id', { ascending: false });
-            const container = document.getElementById('container-ucapan');
-            if (data && data.length > 0) {
-                container.innerHTML = data.map(u => `
-                    <div class="pt-3 border-t border-gray-100 first:border-none first:pt-0">
-                        <p class="text-xs font-semibold text-[#4A443C]">${u.nama_tamu}</p>
-                        <p class="text-[11px] text-[#7A7165] font-light mt-1">${u.isi_ucapan}</p>
-                    </div>
-                `).join('');
+            try {
+                const { data, error } = await supabaseClient
+                    .from('ucapan_undangan')
+                    .select('*')
+                    .eq('pesanan_id', pesananId)
+                    .order('id', { ascending: false });
+
+                if (error) throw error;
+
+                const container = document.getElementById('container-ucapan');
+                if (!container) return;
+
+                if (data && data.length > 0) {
+                    container.innerHTML = data.map(u => `
+                        <div class="pt-3 border-t border-amber-900/30 first:border-none first:pt-0">
+                            <p class="text-xs font-semibold text-amber-400">${u.nama_tamu}</p>
+                            <p class="text-[11px] text-amber-200/70 font-light mt-1">${u.isi_ucapan}</p>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = `<p class="text-xs text-amber-700 italic text-center py-2">Dereng wonten serat donga.</p>`;
+                }
+            } catch (err) {
+                console.error("Gagal memuat daftar ucapan:", err.message);
             }
         }
 
