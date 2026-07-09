@@ -38,7 +38,6 @@ export default async function handler(req, res) {
             const maps_link = fields.maps_link?.[0] || fields.maps_link;
             const no_rekening = fields.no_rekening?.[0] || fields.no_rekening;
             const tema_undangan = fields.tema_undangan?.[0] || fields.tema_undangan;
-
             const pemilik_rekening = fields.pemilik_rekening?.[0] || fields.pemilik_rekening;
 
             if (!nama_pria || !nama_wanita || !tanggal_acara) {
@@ -51,7 +50,8 @@ export default async function handler(req, res) {
             const slug = `${cleanPria}-dan-${cleanWanita}-${uniqueId}`;
 
             let fotoPublicUrl = null;
-            const fotoFile = files.foto-prewedding?.[0] || files.foto-prewedding;
+            
+            const fotoFile = files['foto-prewedding']?.[0] || files['foto-prewedding'];
 
             if (fotoFile && fotoFile.filepath) {
                 const fileData = fs.readFileSync(fotoFile.filepath);
