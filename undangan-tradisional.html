@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Pinyon+Script&display=swap" rel="stylesheet\">\n    <title>The Wedding Invitation - Traditional Royal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <title>The Wedding Invitation - Traditional Royal</title>
     <style>
         .font-serif-formal { font-family: 'Playfair Display', serif; }
         .font-signature { font-family: 'Pinyon Script', cursive; }
@@ -17,7 +18,7 @@
         <source src="https://cdn.pixabay.com/download/audio/2024/09/09/audio_7c0b2e4d8a.mp3?filename=here-comes-the-bride-the-wedding-march-238543.mp3" type="audio/mpeg">
     </audio>
 
-    <div id="cover-section\" class="fixed inset-0 z-50 bg-[#0d1610] flex flex-col justify-between items-center py-20 px-8 text-center transition-all duration-1000 ease-in-out border-4 border-amber-900/20">
+    <div id="cover-section" class="fixed inset-0 z-50 bg-[#0d1610] flex flex-col justify-between items-center py-20 px-8 text-center transition-all duration-1000 ease-in-out border-4 border-amber-900/20">
         <p class="text-[10px] uppercase tracking-[0.3em] text-amber-500/80 font-semibold">Serat Ulem Pernikahan</p>
         
         <div class="space-y-4">
@@ -132,7 +133,7 @@
 
     <script>
         const supabaseUrl = "https://wclwrtwpsuoxgbygngon.supabase.co";
-        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndjbHdydHdwc3VveGdieWduZ29uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA0MTAzNDYsImV4cCI6MjA1NjAxNjM0Nn0.Vb4S_p7XW3_T_7_wX099qNnZJmC8g0rM8y9qU6h_0sE"; // Sesuai file asli Anda
+        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndjbHdydHdwc3VveGdieWduZ29uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA0MTAzNDYsImV4cCI6MjA1NjAxNjM0Nn0.Vb4S_p7XW3_T_7_wX099qNnZJmC8g0rM8y9qU6h_0sE";
         const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
         let globalPesananId = null;
@@ -256,15 +257,11 @@
                     if (data.no_rekening) {
                         document.getElementById('display-no-rekening').innerText = data.no_rekening;
                         
-                        // =======================================================
-                        // LOGIKA TAMBAHAN PENGECEKAN PEMILIK REKENING (YG BARU)
-                        // =======================================================
                         if (data.pemilik_rekening === 'wanita') {
                             document.getElementById('display-an-rekening').innerText = `a.n. ${data.nama_wanita}`;
                         } else {
                             document.getElementById('display-an-rekening').innerText = `a.n. ${data.nama_pria}`;
                         }
-                        // =======================================================
                     } else {
                         document.getElementById('section-kado').style.display = 'none';
                     }
