@@ -6,209 +6,240 @@
     <title>Dashboard Admin - Diyah Wedding</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
 </head>
-<body class="bg-gray-100 font-sans p-4 md:p-6">
+<body class="bg-slate-50 text-slate-800 min-h-screen antialiased">
 
-    <div class="max-w-6xl mx-auto bg-white p-4 md:p-6 rounded-xl shadow-md">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-gray-100 pb-4">
-            <div>
-                <h1 class="text-xl md:text-2xl font-bold text-gray-800">Daftar Pesanan Undangan</h1>
-                <p class="text-xs text-gray-500 mt-1">Kelola data klien dan generate link undangan digital otomatis</p>
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm backdrop-blur-md bg-white/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 bg-indigo-600 rounded-xl text-white shadow-md shadow-indigo-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-slate-900">Diyah Wedding</h1>
+                    <p class="text-xs text-slate-500 font-medium">Control Panel & Wedding Management</p>
+                </div>
             </div>
-            <button onclick="loadData()" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2.5 rounded-lg shadow font-medium transition-colors">
-                🔄 Refresh Data
+            <button onclick="loadData()" class="flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 text-sm px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm font-semibold transition-all duration-200 active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-500 animate-spin-hover" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.253 8H18" />
+                </svg>
+                Refresh Data
             </button>
         </div>
+    </header>
 
-        <div class="hidden md:block overflow-x-auto border border-gray-100 rounded-xl">
-            <table class="w-full text-left border-collapse">
-                <thead>
-                    <tr class="bg-gray-50 text-gray-600 text-xs font-semibold uppercase border-b border-gray-100">
-                        <th class="p-4">Pengantin</th>
-                        <th class="p-4">Tema</th>
-                        <th class="p-4">Tanggal Acara</th>
-                        <th class="p-4">Link Utama</th>
-                        <th class="p-4 text-center">Aksi Tamu</th>
-                    </tr>
-                </thead>
-                <tbody id="data-tbody" class="text-sm text-gray-700 divide-y divide-gray-50">
-                    <tr>
-                        <td colspan="5" class="p-4 text-center text-gray-400 font-medium animate-pulse">Memuat data dari database...</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div id="data-card-container" class="md:hidden space-y-4">
-            <div class="p-4 text-center text-gray-400 font-medium animate-pulse border border-gray-100 rounded-xl">
-                Memuat data mobile...
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-tamu" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-2xl w-full max-w-md p-6 shadow-xl transform scale-95 transition-all duration-300">
-            <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h3 class="font-bold text-gray-800 text-lg">Buat Link Nama Tamu</h3>
-                <button onclick="tutupModalTamu()" class="text-gray-400 hover:text-gray-600 font-semibold text-xl">&times;</button>
-            </div>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Pasangan</label>
-                    <p id="modal-pasangan" class="text-gray-800 font-bold text-base">-</p>
-                </div>
+            <div class="lg:col-span-2 space-y-4">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="p-5 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
+                        <h2 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            Daftar Pesanan Aktif
+                        </h2>
+                        <span id="loading-indicator" class="text-xs bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full font-semibold border border-indigo-100">Memuat data...</span>
+                    </div>
 
-                <div>
-                    <label for="input-nama-tamu" class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Nama Tamu Undangan</label>
-                    <input type="text" id="input-nama-tamu" placeholder="Contoh: Gavin atau Mia" oninput="generateLinkHasil()" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
-                </div>
-
-                <div id="box-hasil-link" class="bg-gray-50 p-3 rounded-xl border border-gray-100 space-y-2 hidden">
-                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider">Tautan Siap Kirim</label>
-                    <p id="text-link-hasil" class="text-xs text-blue-600 font-mono break-all bg-white p-2 rounded border"></p>
-                    
-                    <div class="grid grid-cols-2 gap-2 pt-1">
-                        <button onclick="salinLinkTamu()" class="bg-gray-800 hover:bg-gray-900 text-white text-xs py-2 rounded-lg font-medium transition-colors">
-                            📋 Salin Tautan
-                        </button>
-                        <a id="btn-wa-share" href="#" target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-xs py-2 rounded-lg font-medium transition-colors flex items-center justify-center gap-1">
-                            💬 Kirim ke WA
-                        </a>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-400 uppercase text-[10px] tracking-wider font-bold border-b border-slate-200">
+                                    <th class="p-4 pl-6">ID & Klien</th>
+                                    <th class="p-4">Slug Undangan</th>
+                                    <th class="p-4">Tanggal Acara</th>
+                                    <th class="p-4 pr-6 text-right">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabel-pesanan-body" class="divide-y divide-slate-100 text-sm text-slate-700">
+                                <tr>
+                                    <td colspan="4" class="p-8 text-center text-slate-400 italic">
+                                        Menghubungkan ke database Supabase...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sticky top-28 space-y-6">
+                    <div class="border-b border-slate-100 pb-4">
+                        <h2 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                            🚀 Link Generator
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-1">Pilih client dari tabel terlebih dahulu untuk membuat tautan khusus tamu.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/60 space-y-3">
+                        <div class="grid grid-cols-2 gap-y-2 text-xs">
+                            <span class="text-slate-400 font-medium">Klien Aktif:</span>
+                            <span id="label-pasangan" class="font-bold text-slate-800 text-right">-</span>
+                            
+                            <span class="text-slate-400 font-medium">Slug Target:</span>
+                            <span id="label-slug" class="font-mono text-indigo-600 font-semibold text-right">-</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide">Nama Tamu Undangan</label>
+                        <input type="text" id="input-nama-tamu" oninput="generateLink()" placeholder="Contoh: Budi Santoso & Pasangan" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 shadow-sm transition-all">
+                    </div>
+
+                    <div id="box-hasil-link" class="hidden space-y-4 pt-2 animate-fade-in">
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide">Pilih Template Tema</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="setTema('modern')" id="btn-tema-modern" class="py-2.5 text-xs font-bold rounded-xl border transition-all text-center">Modern</button>
+                                <button onclick="setTema('tradisional')" id="btn-tema-tradisional" class="py-2.5 text-xs font-bold rounded-xl border transition-all text-center">Tradisional</button>
+                                <button onclick="setTema('kartun')" id="btn-tema-kartun" class="py-2.5 text-xs font-bold rounded-xl border transition-all text-center">Kartun</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide">Tautan Khusus Tamu</label>
+                            <div class="p-3.5 bg-indigo-50/50 border border-indigo-100 rounded-xl font-mono text-xs text-indigo-700 break-all select-all font-medium leading-relaxed" id="text-link-hasil">
+                                -
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <button onclick="salinLinkTamu()" class="flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl shadow transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                                Salin Link
+                            </button>
+                            <a id="btn-wa-share" href="#" target="_blank" class="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-3 px-4 rounded-xl shadow transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.948 0c3.179.001 6.167 1.24 8.412 3.487 2.245 2.247 3.48 5.239 3.479 8.421-.004 6.59-5.342 11.938-11.896 11.938-2.003-.001-3.971-.507-5.714-1.47L0 24zm6.59-2.537c1.605.952 3.571 1.454 5.355 1.456 5.4 0 9.794-4.394 9.798-9.796.002-2.618-1.017-5.08-2.869-6.936C17.02 4.331 14.55 3.314 11.943 3.314c-5.4 0-9.794 4.396-9.798 9.798-.001 1.838.485 3.633 1.408 5.213l-.993 3.626 3.712-.974z"/>
+                                </svg>
+                                Kirim WA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
+    </main>
 
     <script>
         const SUPABASE_URL = "https://wwpdtspezkhtszyoyukm.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3cGR0c3BlemtodHN6eW95dWttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4OTQ0OTUsImV4cCI6MjA5ODQ3MDQ5NX0.5MFD5yA8ip4IeqGLWTaDJDOPji7zrq9AWxAb7_C5V74";
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        let activeSlug = "";
-        let activeTema = "";
-        let activePasangan = "";
+        let activeSlug = '';
+        let activePasangan = '';
+        let activeTema = 'modern';
 
         async function loadData() {
-            const tbody = document.getElementById('data-tbody');
-            const cardContainer = document.getElementById('data-card-container');
+            const ind = document.getElementById('loading-indicator');
+            const tbody = document.getElementById('tabel-pesanan-body');
+            
+            ind.style.display = 'inline-block';
+            ind.innerText = 'Mengunduh data...';
 
             try {
                 const { data, error } = await supabaseClient
                     .from('pesanan_undangan')
                     .select('*')
-                    .order('created_at', { ascending: false });
+                    .order('id', { ascending: false });
 
                 if (error) throw error;
 
                 if (!data || data.length === 0) {
-                    const kosongMsg = `<tr><td colspan="5" class="p-8 text-center text-gray-400">Belum ada data pesanan undangan.</td></tr>`;
-                    if(tbody) tbody.innerHTML = kosongMsg;
-                    if(cardContainer) cardContainer.innerHTML = `<div class="p-8 text-center text-gray-400 text-sm border rounded-xl">Belum ada data pesanan.</div>`;
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="4" class="p-8 text-center text-slate-400 italic">
+                                Tidak ada data pesanan di database.
+                            </td>
+                        </tr>`;
+                    ind.style.display = 'none';
                     return;
                 }
 
-                if(tbody) tbody.innerHTML = "";
-                if(cardContainer) cardContainer.innerHTML = "";
+                tbody.innerHTML = data.map(item => {
+                    const tgl = item.tanggal_acara ? new Date(item.tanggal_acara).toLocaleDateString('id-ID', {day:'numeric', month:'short', year:'numeric'}) : '-';
+                    return `
+                        <tr class="hover:bg-slate-50/80 transition-colors group">
+                            <td class="p-4 pl-6">
+                                <div class="font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">${item.nama_pria} & ${item.nama_wanita}</div>
+                                <div class="text-xs text-slate-400 font-medium mt-0.5">ID Order: #${item.id}</div>
+                            </td>
+                            <td class="p-4">
+                                <span class="font-mono bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md text-xs border border-slate-200/60 font-semibold">${item.slug}</span>
+                            </td>
+                            <td class="p-4 text-xs font-semibold text-slate-600">
+                                ${tgl}
+                            </td>
+                            <td class="p-4 pr-6 text-right">
+                                <button onclick="pilihKlien('${item.slug}', '${item.nama_pria} & ${item.nama_wanita}')" class="bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white text-xs font-bold px-3.5 py-2 rounded-xl transition-all duration-200 shadow-sm border border-indigo-100/80">
+                                    Pilih & Proses
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
 
-                data.forEach(pesanan => {
-                    const tema = pesanan.tema_undangan || 'default';
-                    let fileTemplate = 'undangan.html';
+                ind.innerText = 'Data Sinkron';
+                setTimeout(() => ind.style.display = 'none', 1500);
 
-                    if (tema === 'modern') fileTemplate = 'undangan-modern.html';
-                    else if (tema === 'tradisional') fileTemplate = 'undangan-tradisional.html';
-                    else if (tema === 'kartun') fileTemplate = 'undangan-kartun.html';
-
-                    const domainAsli = window.location.origin;
-                    const linkFinalWeb = `${domainAsli}/${fileTemplate}?slug=${pesanan.slug}`;
-                    const namaPasanganStr = `${pesanan.nama_pria} & ${pesanan.nama_wanita}`;
-
-                    let tanggalTampil = '-';
-                    if (pesanan.tanggal_acara) {
-                        const opsi = { day: 'numeric', month: 'long', year: 'numeric' };
-                        tanggalTampil = new Date(pesanan.tanggal_acara).toLocaleDateString('id-ID', opsi);
-                    }
-
-                    if(tbody) {
-                        tbody.innerHTML += `
-                            <tr class="hover:bg-gray-50/80 transition-colors">
-                                <td class="p-4 font-semibold text-gray-900">${namaPasanganStr}</td>
-                                <td class="p-4"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs font-medium uppercase tracking-wider">${tema}</span></td>
-                                <td class="p-4 text-gray-500 text-xs">${tanggalTampil}</td>
-                                <td class="p-4">
-                                    <a href="${linkFinalWeb}" target="_blank" class="text-blue-600 hover:underline font-medium text-xs break-all">
-                                        ${fileTemplate}?slug=${pesanan.slug} ↗
-                                    </a>
-                                </td>
-                                <td class="p-4 text-center">
-                                    <button onclick="bukaModalTamu('${pesanan.slug}', '${tema}', '${namaPasanganStr}')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs px-3 py-1.5 rounded-lg font-semibold border border-blue-200 transition-colors">
-                                        📝 Buat Link Tamu
-                                    </button>
-                                </td>
-                            </tr>
-                        `;
-                    }
-
-                    if(cardContainer) {
-                        cardContainer.innerHTML += `
-                            <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 space-y-3 shadow-sm">
-                                <div class="flex justify-between items-center border-b pb-2">
-                                    <div class="font-bold text-gray-900 text-base">${namaPasanganStr}</div>
-                                    <span class="px-2 py-0.5 bg-gray-200 text-gray-700 rounded text-[10px] font-bold uppercase tracking-wide">${tema}</span>
-                                </div>
-                                <div class="text-xs space-y-1 text-gray-600">
-                                    <div><span class="font-semibold text-blue-600">📅 Acara:</span> ${tanggalTampil}</div>
-                                    <div><span class="font-semibold text-blue-600">📍 Tempat:</span> ${pesanan.lokasi_acara || '-'}</div>
-                                </div>
-                                <div class="grid grid-cols-2 gap-2 pt-1">
-                                    <a href="${linkFinalWeb}" target="_blank" class="text-center bg-gray-800 hover:bg-gray-900 text-white text-xs py-2 rounded-lg font-medium shadow-sm transition-colors">
-                                        Lihat Undangan
-                                    </a>
-                                    <button onclick="bukaModalTamu('${pesanan.slug}', '${tema}', '${namaPasanganStr}')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs py-2 rounded-lg font-medium shadow-sm transition-colors">
-                                        📝 Link Tamu
-                                    </button>
-                                </div>
-                            </div>
-                        `;
-                    }
-                });
-
-            } catch (error) {
-                console.error("Error ambil data:", error);
-                const errorMsg = `Gagal mengambil data dari Supabase: ${error.message}`;
-                if(tbody) tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-500 font-medium">${errorMsg}</td></tr>`;
-                if(cardContainer) cardContainer.innerHTML = `<div class="p-4 text-center text-red-500 text-sm font-medium border border-red-200 bg-red-50 rounded-xl">${errorMsg}</div>`;
+            } catch (err) {
+                alert('Gagal memuat data database: ' + err.message);
+                tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-red-500">Error: ${err.message}</td></tr>`;
+                ind.style.display = 'none';
             }
         }
 
-        function bukaModalTamu(slug, tema, pasangan) {
+        function pilihKlien(slug, namaPasangan) {
             activeSlug = slug;
-            activeTema = tema;
-            activePasangan = pasangan;
+            activePasangan = namaPasangan;
 
-            document.getElementById('modal-pasangan').innerText = pasangan;
-            document.getElementById('input-nama-tamu').value = "";
-            document.getElementById('box-hasil-link').classList.add('hidden');
+            document.getElementById('label-pasangan').innerText = namaPasangan;
+            document.getElementById('label-slug').innerText = slug;
+            document.getElementById('input-nama-tamu').value = '';
             
-            const modal = document.getElementById('modal-tamu');
-            modal.classList.remove('hidden');
+            document.getElementById('box-hasil-link').classList.remove('hidden');
+            setTema('modern');
         }
 
-        function tutupModalTamu() {
-            document.getElementById('modal-tamu').classList.add('hidden');
+        function setTema(tema) {
+            activeTema = tema;
+            
+            const btnModern = document.getElementById('btn-tema-modern');
+            const btnTradi = document.getElementById('btn-tema-tradisional');
+            const btnKartun = document.getElementById('btn-tema-kartun');
+
+            [btnModern, btnTradi, btnKartun].forEach(btn => {
+                btn.className = "py-2.5 text-xs font-bold rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 shadow-sm";
+            });
+
+            if (tema === 'modern') {
+                btnModern.className = "py-2.5 text-xs font-bold rounded-xl border border-indigo-600 bg-indigo-600 text-white shadow-md shadow-indigo-100";
+            } else if (tema === 'tradisional') {
+                btnTradi.className = "py-2.5 text-xs font-bold rounded-xl border border-indigo-600 bg-indigo-600 text-white shadow-md shadow-indigo-100";
+            } else if (tema === 'kartun') {
+                btnKartun.className = "py-2.5 text-xs font-bold rounded-xl border border-indigo-600 bg-indigo-600 text-white shadow-md shadow-indigo-100";
+            }
+
+            generateLink();
         }
 
-        function generateLinkHasil() {
+        function generateLink() {
             const namaTamu = document.getElementById('input-nama-tamu').value.trim();
-            const boxHasil = document.getElementById('box-hasil-link');
             const txtHasil = document.getElementById('text-link-hasil');
             const btnWa = document.getElementById('btn-wa-share');
 
-            if (!namaTamu) {
-                boxHasil.classList.add('hidden');
-                return;
-            }
+            if (!activeSlug) return;
 
             let fileTemplate = 'undangan.html';
             if (activeTema === 'modern') fileTemplate = 'undangan-modern.html';
@@ -216,25 +247,25 @@
             else if (activeTema === 'kartun') fileTemplate = 'undangan-kartun.html';
 
             const domainAsli = window.location.origin;
-            const namaAmanUrl = encodeURIComponent(namaTamu);
+            const namaAmanUrl = namaTamu ? encodeURIComponent(namaTamu) : 'Tamu-Undangan';
             
             const linkFinal = `${domainAsli}/${fileTemplate}?slug=${activeSlug}&to=${namaAmanUrl}`;
 
             txtHasil.innerText = linkFinal;
 
-            const templatePesanWA = `Halo ${activePasangan},\n\nBerikut tautan undangan digital khusus untuk teman Anda *${namaTamu}*:\n\n${linkFinal}\n\nSilakan disalin dan dibagikan. Terima kasih!`;
+            const templatePesanWA = `Halo ${activePasangan},\n\nBerikut tautan undangan digital khusus untuk teman Anda *${namaTamu || 'Tamu Undangan'}*:\n\n${linkFinal}\n\nSilakan disalin dan dibagikan. Terima kasih!`;
             btnWa.href = `https://wa.me/?text=${encodeURIComponent(templatePesanWA)}`;
-
-            boxHasil.classList.remove('hidden');
         }
 
         function salinLinkTamu() {
             const linkTeks = document.getElementById('text-link-hasil').innerText;
+            if (linkTeks === '-' || !activeSlug) return;
+            
             navigator.clipboard.writeText(linkTeks);
             alert('Tautan tamu berhasil disalin ke clipboard!');
         }
 
-        window.addEventListener('DOMContentLoaded', loadData);
+        window.onload = loadData;
     </script>
 </body>
 </html>
