@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Playfair+Display:ital@0;1&display=swap\" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     <title>The Wedding Invitation - Minimalist Modern</title>
     <style>
         .font-sans-clean { font-family: 'Montserrat', sans-serif; }
@@ -104,7 +104,7 @@
             </div>
         </section>
 
-        <section class="py-16 px-8 text-center space-y-8 bg-white">
+        <section id="section-kado" class="py-16 px-8 text-center space-y-8 bg-white">
             <div class="space-y-2">
                 <h3 class="text-lg uppercase tracking-[0.2em] text-[#4A443C] font-semibold">Wedding Gift</h3>
                 <p class="text-xs text-[#7A7165] font-light leading-relaxed max-w-xs mx-auto">Your presence and prayers are the greatest gift for us. However, if you wish to extend a digital token of love, you can transfer via account below:</p>
@@ -172,11 +172,11 @@
             ytPlayer = new YT.Player('youtube-audio-player', {
                 height: '0',
                 width: '0',
-                videoId: 'tg00YEETFzg', // ID Video Resmi: Rihanna - We Found Love
+                videoId: 'b23kx950QcY',
                 playerVars: {
                     'autoplay': 0,
                     'loop': 1,
-                    'playlist': 'tg00YEETFzg', // Penting agar fungsi loop berjalan di YouTube Player
+                    'playlist': 'b23kx950QcY',
                     'controls': 0,
                     'showinfo': 0,
                     'rel': 0
@@ -316,8 +316,20 @@
                     }
 
                     if (data.no_rekening) {
-                        if (document.getElementById('display-no-rekening')) document.getElementById('display-no-rekening').innerText = data.no_rekening;
-                        if (document.getElementById('display-an-rekening')) document.getElementById('display-an-rekening').innerText = `a.n. ${data.nama_pria}`;
+                        if (document.getElementById('display-no-rekening')) {
+                            document.getElementById('display-no-rekening').innerText = data.no_rekening;
+                        }
+                        if (document.getElementById('display-an-rekening')) {
+                            if (data.pemilik_rekening === 'wanita') {
+                                document.getElementById('display-an-rekening').innerText = `a.n. ${data.nama_wanita}`;
+                            } else {
+                                document.getElementById('display-an-rekening').innerText = `a.n. ${data.nama_pria}`;
+                            }
+                        }
+                    } else {
+                        if (document.getElementById('section-kado')) {
+                            document.getElementById('section-kado').style.display = 'none';
+                        }
                     }
 
                     const txtTanggalCover = document.getElementById('tanggal-acara-cover');
