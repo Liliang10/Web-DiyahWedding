@@ -132,8 +132,8 @@
     </main>
 
     <script>
-        const supabaseUrl = "https://wclwrtwpsuoxgbygngon.supabase.co";
-        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndjbHdydHdwc3VveGdieWduZ29uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA0MTAzNDYsImV4cCI6MjA1NjAxNjM0Nn0.Vb4S_p7XW3_T_7_wX099qNnZJmC8g0rM8y9qU6h_0sE";
+        const SUPABASE_URL = "https://wwpdtspezkhtszyoyukm.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3cGR0c3BlemtodHN6eW95dWttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4OTQ0OTUsImV4cCI6MjA5ODQ3MDQ5NX0.5MFD5yA8ip4IeqGLWTaDJDOPji7zrq9AWxAb7_C5V74";
         const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
         let globalPesananId = null;
@@ -145,8 +145,7 @@
 
         function startCountdown(targetDate) {
             const targetTime = new Date(targetDate).getTime();
-            // PERBAIKAN DI SINI: Mendeklarasikan intervalId terlebih dahulu di bagian atas scope fungsi agar updateTimer bisa mengakses variabelnya secara aman
-            let intervalId;
+            let intervalId = null;
             
             function updateTimer() {
                 const now = new Date().getTime();
