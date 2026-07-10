@@ -321,7 +321,7 @@
                     closeIcon.classList.remove('hidden');
                 } else {
                     mobileMenu.classList.add('hidden');
-                    hamburgerIcon.classList.remove('hidden');
+                    hamburgerIcon.remove('hidden');
                     closeIcon.classList.add('hidden');
                 }
             });
@@ -333,14 +333,15 @@
             e.preventDefault();
 
             const formDataPayload = new FormData(formUndangan);
-            
-            const fotoInput = document.getElementById('foto_prewedding');
-            
-            if (fotoInput && fotoInput.files.length > 0) {
-                formDataPayload.append('foto_prewedding', fotoInput.files[0]);
-            }
 
             try {
+                const btnSubmit = formUndangan.querySelector('button[type="submit"]');
+                const originalBtnText = btnSubmit ? btnSubmit.innerText : 'Kirim';
+                if (btnSubmit) {
+                    btnSubmit.disabled = true;
+                    btnSubmit.innerText = 'Memproses...';
+                }
+
                 const response = await fetch('/api/booking', {
                     method: 'POST',
                     body: formDataPayload 
@@ -356,23 +357,32 @@
                     const tema = result.tema;
 
                     if (tema === 'modern') {
-                        window.location.href = `/undangan-modern?slug=${slug}`;
+                        window.location.href = `/undangan-modern.html?slug=${slug}`;
                     } else if (tema === 'tradisional') {
-                        window.location.href = `/undangan-tradisional?slug=${slug}`;
+                        window.location.href = `/undangan-tradisional.html?slug=${slug}`;
                     } else if (tema === 'kartun') {
-                        window.location.href = `/undangan-kartun?slug=${slug}`;
+                        window.location.href = `/undangan-kartun.html?slug=${slug}`;
                     } else if (tema === 'islamic') {
-                        window.location.href = `/undangan-islamic?slug=${slug}`;
+                        window.location.href = `/undangan-islamic.html?slug=${slug}`;
                     } else {
-                        window.location.href = `/undangan?slug=${slug}`;
+                        window.location.href = `/index.html?slug=${slug}`;
                     }
 
                 } else {
                     alert('Gagal menyimpan data: ' + (result.error || result.message));
+                    if (btnSubmit) {
+                        btnSubmit.disabled = false;
+                        btnSubmit.innerText = originalBtnText;
+                    }
                 }
             } catch (error) {
                 console.error('Error saat submit:', error);
                 alert('Terjadi kesalahan jaringan atau server internal.');
+                
+                if (btnSubmit) {
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerText = originalBtnText;
+                }
             }
         });
     </script>
