@@ -1,6 +1,8 @@
 {
   "name": "diyah-wedding",
   "compatibility_date": "2026-07-10",
+  "workers_dev": true,
+  "preview_urls": true,
   "assets": {
     "directory": "."
   }
