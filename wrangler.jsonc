@@ -1,5 +1,7 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "diyah-wedding",
+  "main": "index.html",
   "compatibility_date": "2026-07-10",
   "assets": {
     "directory": ".",
