@@ -31,13 +31,15 @@ export async function onRequestPost(context) {
             });
         }
 
-        const slug = `${nama_pria.toLowerCase().replace(/[^a-z0-0]/g, '')}-dan-${nama_wanita.toLowerCase().replace(/[^a-z0-0]/g, '')}-${Math.floor(1000 + Math.random() * 9000)}`;
+        const cleanPria = nama_pria.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const cleanWanita = nama_wanita.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const slug = `${cleanPria}-dan-${cleanWanita}-${Math.floor(1000 + Math.random() * 9000)}`;
 
         const fileFoto = formData.get('foto_prewedding');
         let fotoPublicUrl = null;
 
-        if (fileFoto && fileFoto.size > 0 && typeof fileFoto.arrayBuffer === 'function') {
-            const fileExt = fileFoto.name.split('.').pop();
+        if (fileFoto && typeof fileFoto === 'object' && fileFoto.size > 0 && typeof fileFoto.arrayBuffer === 'function') {
+            const fileExt = fileFoto.name ? fileFoto.name.split('.').pop() : 'jpg';
             const fileName = `${slug}-${Date.now()}.${fileExt}`;
             const filePath = `prewedding/${fileName}`;
 
@@ -46,13 +48,13 @@ export async function onRequestPost(context) {
             const { data: uploadData, error: uploadError } = await supabase.storage
                 .from('undangan-bucket')
                 .upload(filePath, fileBuffer, {
-                    contentType: fileFoto.type,
+                    contentType: fileFoto.type || 'image/jpeg',
                     upsert: true
                 });
 
             if (uploadError) {
                 console.error('Gagal upload ke Supabase Storage:', uploadError);
-                throw new Error('Gagal mengunggah foto prewedding.');
+                throw new Error(`Gagal mengunggah foto prewedding: ${uploadError.message}`);
             }
 
             const { data: publicUrlData } = supabase.storage
@@ -99,8 +101,11 @@ export async function onRequestPost(context) {
         });
 
     } catch (error) {
-        console.error('Error saat menyimpan:', error);
-        return new Response(JSON.stringify({ success: false, error: error.message }), {
+        console.error('Error internal server:', error);
+        return new Response(JSON.stringify({ 
+            success: false, 
+            error: error.message || 'Terjadi kesalahan internal pada server.' 
+        }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' }
         });
