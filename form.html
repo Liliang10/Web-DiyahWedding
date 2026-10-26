@@ -7,16 +7,17 @@
     <title>Form Booking Undangan</title>
     
     <style>
-        input:placeholder-shown ~ .box-silang { display: flex; }
-        input:placeholder-shown ~ .box-centang { display: none; }
-
-        input:not(:placeholder-shown) ~ .box-silang { display: none; }
-        input:not(:placeholder-shown) ~ .box-centang { display: flex; }
-        
-        select:invalid ~ .box-silang { display: flex; }
-        select:invalid ~ .box-centang { display: none; }
-        select:valid ~ .box-silang { display: none; }
+        /* Awalnya netral; centang hanya muncul saat valid, border merah hanya setelah field disentuh */
+        .box-silang { display: none !important; }
+        .box-centang { display: none; }
+        input:valid ~ .box-centang,
         select:valid ~ .box-centang { display: flex; }
+
+        input:user-invalid,
+        select:user-invalid {
+            border-color: #ef4444 !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+        }
     </style>
     
 </head>
@@ -164,20 +165,22 @@
                         <div class="relative">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nama Pria</label>
                             <input type="text" name="nama_pria" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
-                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                         </div>
-                        <div class="relative">
+                                                <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Panggilan Pria</label>
+                            <input type="text" name="nama_panggilan_pria" placeholder="Contoh: nama yang dipakai di undangan" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
+                        </div>
+<div class="relative">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nama Ayah</label>
                             <input type="text" name="ayah_pria" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
-                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                         </div>
                         <div class="relative">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nama Ibu</label>
                             <input type="text" name="ibu_pria" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
-                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                         </div>
                     </div>
                 </div>
@@ -191,20 +194,22 @@
                         <div class="relative">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nama Wanita</label>
                             <input type="text" name="nama_wanita" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
-                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                         </div>
-                        <div class="relative">
+                                                <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Panggilan Wanita</label>
+                            <input type="text" name="nama_panggilan_wanita" placeholder="Contoh: nama yang dipakai di undangan" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
+                        </div>
+<div class="relative">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nama Ayah</label>
                             <input type="text" name="ayah_wanita" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
-                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                         </div>
                         <div class="relative">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nama Ibu</label>
                             <input type="text" name="ibu_wanita" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
-                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                         </div>
                     </div>
                 </div>
@@ -222,20 +227,17 @@
                         <div class="relative">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Waktu Acara</label>
                             <input type="text" name="waktu_acara" placeholder="Contoh: 09:00 - Selesai" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
-                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                         </div>
                         <div class="relative md:col-span-2">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Lokasi Acara (Alamat Lengkap)</label>
                             <input type="text" name="lokasi_acara" placeholder="Nama Gedung / Jalan, No, RT/RW, Kecamatan, Kota" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
-                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                         </div>
                         <div class="relative md:col-span-2">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Link Google Maps Lokasi</label>
                             <input type="url" name="maps_link" placeholder="https://maps.google.com/..." required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
-                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                         </div>
                     </div>
                 </div>
@@ -249,8 +251,7 @@
                         <div class="relative">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nomor Rekening / E-Wallet</label>
                             <input type="text" name="no_rekening" placeholder="Contoh: BCA - 1234567" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
-                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                         </div>
                         <div class="relative">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Rekening Atas Nama Siapa?</label>
@@ -259,8 +260,7 @@
                                 <option value="pria">Mempelai Pria</option>
                                 <option value="wanita">Mempelai Wanita</option>
                             </select>
-                            <div class="box-silang absolute right-8 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-8 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-8 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                             <div class="pointer-events-none absolute inset-y-0 right-3 top-6 flex items-center px-2 text-gray-500">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
@@ -287,8 +287,7 @@
                                 <option value="kartun">Cute Cartoon Style</option>
                                 <option value="islamic">Islamic Emerald</option>
                             </select>
-                            <div class="box-silang absolute right-8 top-9 text-red-500 text-xs hidden items-center">❌</div>
-                            <div class="box-centang absolute right-8 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="box-centang absolute right-8 top-9 text-green-500 text-xs hidden items-center"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg></div>
                             <div class="pointer-events-none absolute inset-y-0 right-3 top-6 flex items-center px-2 text-gray-500">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>

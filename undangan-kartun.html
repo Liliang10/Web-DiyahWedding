@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Patrick+Hand&display=swap" rel="stylesheet">
-    <title>The Wedding Invitation - Cute Cartoon Style</title>
+    <title>Undangan Pernikahan - Cute Cartoon</title>
     <style>
         .font-bubble { font-family: 'Fredoka', sans-serif; }
         .font-hand { font-family: 'Patrick Hand', cursive; }
@@ -17,7 +17,7 @@
     <div id="youtube-audio-player" class="hidden pointer-events-none absolute w-0 h-0 opacity-0"></div>
 
     <div id="cover-section" class="fixed inset-0 z-50 bg-[#FFEAEA] flex flex-col justify-between items-center py-16 px-6 text-center transition-all duration-1000 ease-in-out">
-        <p class="text-xs tracking-widest uppercase text-[#A07171] font-bold">Wedding Invitation 🎈</p>
+        <p class="text-xs tracking-widest uppercase text-[#A07171] font-bold">Undangan Pernikahan 🎈</p>
         
         <div class="space-y-2">
             <h1 id="nama-mempelai-cover" class="text-4xl md:text-5xl font-hand text-[#DE6B6B]">Loading...</h1>
@@ -27,7 +27,7 @@
 
         <div class="space-y-4 w-full max-w-xs">
             <div class="bg-white/60 p-3 rounded-2xl border-2 border-dashed border-[#FFC1C1]">
-                <p class="text-[11px] uppercase tracking-wider text-[#A07171]">Special Invitation For:</p>
+                <p class="text-[11px] uppercase tracking-wider text-[#A07171]">Undangan Spesial Untuk:</p>
                 <p id="nama-tamu-url" class="text-base font-bold text-[#634444] mt-1">Tamu Undangan</p>
             </div>
             <button id="btn-buka" class="w-full py-3.5 bg-[#DE6B6B] text-white text-sm font-bold uppercase tracking-wider rounded-2xl shadow-md hover:bg-[#C95A5A] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
@@ -39,7 +39,7 @@
     <main class="max-w-md mx-auto bg-white min-h-screen shadow-xl pb-16 relative rounded-none overflow-hidden">
         
         <section class="relative pt-16 pb-10 text-center px-6 bg-[#FFEAEA]/40">
-            <span class="text-xs uppercase tracking-widest text-[#A07171] bg-white px-3 py-1 rounded-full border border-[#FFEAEA] shadow-sm">Our Wedding Day</span>
+            <span class="text-xs uppercase tracking-widest text-[#A07171] bg-white px-3 py-1 rounded-full border border-[#FFEAEA] shadow-sm">Hari Bahagia Kami</span>
             <h2 class="text-4xl font-hand text-[#DE6B6B] mt-6">Loading...</h2>
             
             <div class="w-64 h-64 mx-auto mt-6 bg-[#FFF5F5] border-4 border-white shadow-md rounded-[2rem] overflow-hidden rotate-2 hover:rotate-0 transition-transform duration-500">
@@ -116,7 +116,7 @@
                 <div class="text-[10px] tracking-widest uppercase font-bold text-[#A07171]">Transfer Bank / Dompet Digital</div>
                 <div>
                     <p id="display-no-rekening" class="text-lg font-bold text-[#DE6B6B] tracking-wider font-mono">-</p>
-                    <p id="display-an-rekening" class="text-xs text-[#7D5A5A] uppercase font-bold mt-1">a.n. Groom / Bride</p>
+                    <p id="display-an-rekening" class="text-xs text-[#7D5A5A] uppercase font-bold mt-1">a.n. -</p>
                 </div>
             </div>
         </section>
@@ -270,8 +270,8 @@
                     const data = result.data;
                     globalPesananId = data.id;
 
-                    const gabunganNama = `${data.nama_pria} & ${data.nama_wanita}`;
-                    document.title = `The Wedding of ${gabunganNama}`;
+                    const gabunganNama = `${data.nama_panggilan_pria || data.nama_pria.trim().split(/\s+/)[0]} & ${data.nama_panggilan_wanita || data.nama_wanita.trim().split(/\s+/)[0]}`;
+                    document.title = `Pernikahan ${gabunganNama}`;
                     document.getElementById('nama-mempelai-cover').innerText = gabunganNama;
                     
                     const headings = document.querySelectorAll('main h2');

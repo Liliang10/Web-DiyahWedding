@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Pinyon+Script&display=swap" rel="stylesheet">
-    <title>The Wedding Invitation - Traditional Royal</title>
+    <title>Undangan Pernikahan - Traditional Royal</title>
     <style>
         .font-serif-formal { font-family: 'Playfair Display', serif; }
         .font-signature { font-family: 'Pinyon Script', cursive; }
@@ -100,7 +100,7 @@
             <div class="max-w-xs mx-auto bg-[#111c14] p-4 border border-amber-900/30 text-center space-y-1">
                 <p class="text-[10px] uppercase tracking-widest text-amber-500/50">Nomer Rekening Bank</p>
                 <p id="display-no-rekening" class="text-lg font-bold tracking-wider text-amber-300">-</p>
-                <p id="display-an-rekening" class="text-xs font-light text-amber-200/70">a.n. Groom / Bride</p>
+                <p id="display-an-rekening" class="text-xs font-light text-amber-200/70">a.n. -</p>
             </div>
         </section>
 
@@ -256,8 +256,8 @@
                     const data = result.data;
                     globalPesananId = data.id;
 
-                    const gabunganNama = `${data.nama_pria} & ${data.nama_wanita}`;
-                    document.title = `The Wedding of ${gabunganNama}`;
+                    const gabunganNama = `${data.nama_panggilan_pria || data.nama_pria.trim().split(/\s+/)[0]} & ${data.nama_panggilan_wanita || data.nama_wanita.trim().split(/\s+/)[0]}`;
+                    document.title = `Pernikahan ${gabunganNama}`;
                     document.getElementById('nama-mempelai-cover').innerText = gabunganNama;
                     
                     const headings = document.querySelectorAll('main section h2');

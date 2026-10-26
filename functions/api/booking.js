@@ -12,6 +12,8 @@ export async function onRequestPost(context) {
 
         const nama_pria = formData.get('nama_pria');
         const nama_wanita = formData.get('nama_wanita');
+        const nama_panggilan_pria = formData.get('nama_panggilan_pria');
+        const nama_panggilan_wanita = formData.get('nama_panggilan_wanita');
         const ayah_pria = formData.get('ayah_pria');
         const ibu_pria = formData.get('ibu_pria');
         const ayah_wanita = formData.get('ayah_wanita');
@@ -71,6 +73,8 @@ export async function onRequestPost(context) {
                     slug: slug,
                     nama_pria: nama_pria,
                     nama_wanita: nama_wanita,
+                    ...(nama_panggilan_pria && { nama_panggilan_pria }),
+                    ...(nama_panggilan_wanita && { nama_panggilan_wanita }),
                     ayah_pria: ayah_pria,
                     ibu_pria: ibu_pria,
                     ayah_wanita: ayah_wanita,

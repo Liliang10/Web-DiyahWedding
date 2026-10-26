@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <title>The Wedding Invitation - Islamic Emerald</title>
+    <title>Undangan Pernikahan - Islamic Emerald</title>
     <style>
         .font-arabic { font-family: 'Amiri', serif; }
         .font-signature { font-family: 'Great Vibes', cursive; }
@@ -118,7 +118,7 @@
                 <p class="text-[10px] tracking-widest uppercase font-bold text-emerald-700">Nomor Rekening Bank</p>
                 <div>
                     <p id="display-no-rekening" class="text-xl font-bold tracking-wider text-emerald-900 font-mono">-</p>
-                    <p id="display-an-rekening" class="text-xs font-semibold text-slate-600 uppercase mt-1">a.n. Groom / Bride</p>
+                    <p id="display-an-rekening" class="text-xs font-semibold text-slate-600 uppercase mt-1">a.n. -</p>
                 </div>
             </div>
         </section>
@@ -272,8 +272,8 @@
                     const data = result.data;
                     globalPesananId = data.id;
 
-                    const gabunganNama = `${data.nama_pria} & ${data.nama_wanita}`;
-                    document.title = `The Wedding of ${gabunganNama}`;
+                    const gabunganNama = `${data.nama_panggilan_pria || data.nama_pria.trim().split(/\s+/)[0]} & ${data.nama_panggilan_wanita || data.nama_wanita.trim().split(/\s+/)[0]}`;
+                    document.title = `Pernikahan ${gabunganNama}`;
                     document.getElementById('nama-mempelai-cover').innerText = gabunganNama;
                     
                     const headings = document.querySelectorAll('main h2');
